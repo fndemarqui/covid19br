@@ -27,7 +27,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr replace_na
 #'
-#' @description R package provides a function to automatically import  Brazilian CODID-19 pandemic data into R. Brazilian data is available on the country-level, region-level, state-level, and city-level, and are downloaded from the official Brazilian's repository at <https://covid.saude.gov.br/>. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
+#' @description The package provides a function to automatically import  Brazilian CODID-19 pandemic data into R. Brazilian data is available on the country-level, region-level, state-level, and city-level, and are downloaded from the official Brazilian's repository at <https://covid.saude.gov.br/>. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
 #'
 #'@author Fábio N. Demarqui, Cristiano C. Santos, and Matheus B. Costa.
 #' @docType package

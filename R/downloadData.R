@@ -103,42 +103,42 @@ downloadWorld <- function(language = "en"){
   message(" Done!")
 
   deaths <- deaths %>%
-    rename(local = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "local", "Lat", "Long"),
+    rename(country = 'Country/Region')  %>%
+    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumDeaths") %>%
     mutate(date = mdy(.data$date)) %>%
-    group_by(.data$local, .data$date) %>%
+    group_by(.data$country, .data$date) %>%
     summarise(accumDeaths = sum(.data$accumDeaths))
 
   confirmed <- confirmed %>%
-    rename(local = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "local", "Lat", "Long"),
+    rename(country = 'Country/Region')  %>%
+    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumCases") %>%
     mutate(date = mdy(.data$date)) %>%
-    group_by(.data$local, .data$date) %>%
+    group_by(.data$country, .data$date) %>%
     summarise(accumCases = sum(.data$accumCases))
 
   recovered <- recovered %>%
-    rename(local = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "local", "Lat", "Long"),
+    rename(country = 'Country/Region')  %>%
+    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumRecovered") %>%
     mutate(date = mdy(.data$date)) %>%
-    group_by(.data$local, .data$date) %>%
+    group_by(.data$country, .data$date) %>%
     summarise(accumRecovered = sum(.data$accumRecovered))
 
 
   world <- confirmed %>%
-    full_join(deaths, by=c("local", "date")) %>%
-    full_join(recovered, by=c("local", "date"))
+    full_join(deaths, by=c("country", "date")) %>%
+    full_join(recovered, by=c("country", "date"))
 
   world <- world %>%
-    group_by(.data$local) %>%
+    group_by(.data$country) %>%
     mutate(
       epi_week = epiweek(.data$date),
       newCases = diff(c(0, .data$accumCases)),
       newDeaths = diff(c(0, .data$accumDeaths)),
       newRecovered = diff(c(0, .data$accumRecovered))) %>%
-    relocate(.data$local, .data$date, .data$epi_week)
+    relocate(.data$country, .data$date, .data$epi_week)
 
   # trying to attenuate error on the data base due to non increasing accummulative counts:
   world$newCases[world$newCases < 0] <- 0
@@ -147,28 +147,28 @@ downloadWorld <- function(language = "en"){
 
   #-----------------------------------------------------------------------------------------------------
   # Changing the names of the countries for compatility with the map:
-  world$`local`<-as.character(world$`local`)
-  world$'local'[world$'local'=="US"]<- "United States of America"
-  world$'local'[world$'local'=="Antigua and Barbuda"]<-"Antigua and Barb."
-  world$'local'[world$'local'=="Bosnia and Herzegovina"]<- "Bosnia and Herz."
-  world$'local'[world$'local'=="Central African Republic"]<-"Central African Rep."
-#  world$'local'[world$'local'=="Cote d'Ivoire"]<- "Côte d'Ivoire"
-  world$'local'[world$'local'=="Dominican Republic"]<- "Dominican Rep."
-  world$'local'[world$'local'=="Equatorial Guinea"]<-"Eq. Guinea"
-  world$'local'[world$'local'=="Eswatini"]<-"eSwatini"
-  world$'local'[world$'local'=="Holy See"]<-"Vatican"
-  world$'local'[world$'local'=="Korea, South"]<- "South Korea"
-  world$'local'[world$'local'=="South Sudan"]<-"S. Sudan"
-  world$'local'[world$'local'=="Western Sahara"]<-"W. Sahara"
-#  world$'local'[world$'local'=="Sao Tome and Principe"]<- "São Tomé and Principe"
-  world$'local'[world$'local'=="North Macedonia"]<- "Macedonia"
-  world$'local'[world$'local'=="Saint Vincent and the Grenadines"]<-"St. Vin. and Gren."
-  world$'local'[world$'local'=="Saint Kitts and Nevis"]<-"St. Kitts and Nevis"
-  world$'local'[world$'local'=="Taiwan*"]<-"Taiwan"
-  world$'local'[world$'local'=="Burma"]<-"Myanmar"
-  world$'local'[world$'local'=="Congo (Kinshasa)"]<-"Dem. Rep. Congo"
-  world$'local'[world$'local'=="Congo (Brazzaville)"]<-"Congo"
-  world$'local'[world$'local'=="West Bank and Gaza"]<-"Palestine" # Cisjordania e faixa de gaza
+  world$`country`<-as.character(world$`country`)
+  world$'country'[world$'country'=="US"]<- "United States of America"
+  world$'country'[world$'country'=="Antigua and Barbuda"]<-"Antigua and Barb."
+  world$'country'[world$'country'=="Bosnia and Herzegovina"]<- "Bosnia and Herz."
+  world$'country'[world$'country'=="Central African Republic"]<-"Central African Rep."
+#  world$'country'[world$'country'=="Cote d'Ivoire"]<- "Côte d'Ivoire"
+  world$'country'[world$'country'=="Dominican Republic"]<- "Dominican Rep."
+  world$'country'[world$'country'=="Equatorial Guinea"]<-"Eq. Guinea"
+  world$'country'[world$'country'=="Eswatini"]<-"eSwatini"
+  world$'country'[world$'country'=="Holy See"]<-"Vatican"
+  world$'country'[world$'country'=="Korea, South"]<- "South Korea"
+  world$'country'[world$'country'=="South Sudan"]<-"S. Sudan"
+  world$'country'[world$'country'=="Western Sahara"]<-"W. Sahara"
+#  world$'country'[world$'country'=="Sao Tome and Principe"]<- "São Tomé and Principe"
+  world$'country'[world$'country'=="North Macedonia"]<- "Macedonia"
+  world$'country'[world$'country'=="Saint Vincent and the Grenadines"]<-"St. Vin. and Gren."
+  world$'country'[world$'country'=="Saint Kitts and Nevis"]<-"St. Kitts and Nevis"
+  world$'country'[world$'country'=="Taiwan*"]<-"Taiwan"
+  world$'country'[world$'country'=="Burma"]<-"Myanmar"
+  world$'country'[world$'country'=="Congo (Kinshasa)"]<-"Dem. Rep. Congo"
+  world$'country'[world$'country'=="Congo (Brazzaville)"]<-"Congo"
+  world$'country'[world$'country'=="West Bank and Gaza"]<-"Palestine" # Cisjordania e faixa de gaza
   #-----------------------------------------------------------------------------------------------------
 
   class(world) <-  class(world)[-1]
@@ -183,9 +183,9 @@ downloadWorld <- function(language = "en"){
 #' Function to download COVID-19 data from web repositories
 #' @aliases downloadCovid
 #' @export
-#' @param from label associated with the repository from which the data will be downloaded: "brazil" for the official's brazilian repository, "brazil2" for the non-official repository provided by Brasil.io, and "world" for the Johns Hopkins University's repository.
-#' @return tibble/data.frame containing the downloaded data.
-#' @description This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository mantained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used all over the world as a reliable source of data information on the COVID-19 pandemic at a global level (countries and territories).
+#' @param from repository from which the data will be downloaded: "brazil" (default) "world".
+#' @return when the Brazilian repository is chosen the function returns a list containing the downloaded COVID-19 Brazilian data organized by country, region, state, and city levels; otherwise, the function returns a tibble with the downloaded data at the world-level.
+#' @description This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository maintained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used around the world as a reliable source of data information on the COVID-19 pandemic at a global level.
 #' @examples
 #' \donttest{
 #' library(covid19br)

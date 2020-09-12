@@ -8,13 +8,13 @@
 downloadCovid19(from = c("brazil", "world"))
 }
 \arguments{
-\item{from}{label associated with the repository from which the data will be downloaded: "brazil" for the official's brazilian repository, "brazil2" for the non-official repository provided by Brasil.io, and "world" for the Johns Hopkins University's repository.}
+\item{from}{repository from which the data will be downloaded: "brazil" (default) "world".}
 }
 \value{
-tibble/data.frame containing the downloaded data.
+when the Brazilian repository is chosen the function returns a list containing the downloaded COVID-19 Brazilian data organized by country, region, state, and city levels; otherwise, the function returns a tibble with the downloaded data at the world-level.
 }
 \description{
-This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository mantained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used all over the world as a reliable source of data information on the COVID-19 pandemic at a global level (countries and territories).
+This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository maintained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used around the world as a reliable source of data information on the COVID-19 pandemic at a global level.
 }
 \examples{
 \donttest{

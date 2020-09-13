@@ -1,10 +1,19 @@
 ## Test environments
-* local R installation, R 4.0.2
-* ubuntu 16.04 (on travis-ci), R 4.0.2
-* win-builder (devel)
+* local OS X install, R 3.1.2
+* r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
+* win-builder (devel and release)
 
 ## R CMD check results
+There were no ERRORs or WARNINGs. 
 
-0 errors | 0 warnings | 1 note
+There were 2 NOTE:
 
-* This is a new release.
+* checking CRAN incoming feasibility ... NOTE
+  
+  New submission
+  Maintainer: 'Fabio Demarqui <fndemarqui@est.ufmg.br>'
+    COVID (3:18, 18:58, 18:317)
+
+* checking for future file timestamps ... NOTE
+  unable to verify current time
+

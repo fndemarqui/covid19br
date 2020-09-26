@@ -5,26 +5,32 @@
 \alias{downloadCovid}
 \title{Function to download COVID-19 data from web repositories}
 \usage{
-downloadCovid19(from = c("brazil", "world"))
+downloadCovid19(level = c("brazil", "regions", "states", "cities", "world"))
 }
 \arguments{
-\item{from}{repository from which the data will be downloaded: "brazil" (default) "world".}
+\item{level}{the desired level of data aggregation:  "brazil" (default), "regions", "states", "cities", and "world".}
 }
 \value{
-when the Brazilian repository is chosen the function returns a list containing the downloaded COVID-19 Brazilian data organized by country, region, state, and city levels; otherwise, the function returns a tibble with the downloaded data at the world-level.
+a tibble containing the downloaded data at the specified level.
 }
 \description{
-This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository maintained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used around the world as a reliable source of data information on the COVID-19 pandemic at a global level.
+This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
+}
+\details{
+The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in a single xlsx file. That file contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (over 4G), the data is daily downloaded with the internal function  \code{downloadMS}, and then made available in smaller/lighter binary files at a GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
 }
 \examples{
 \donttest{
 library(covid19br)
 
 # Downloading Brazilian COVID-19 data:
-brazil <- downloadCovid19(from = "brazil")
+brazil <- downloadCovid19(level = "brazil")
+regions <- downloadCovid19(level = "regions")
+states <- downloadCovid19(level = "states")
+cities <- downloadCovid19(level = "cities")
 
 # Downloading world COVID-19 data:
-world <- downloadCovid19(from = "world")
+world <- downloadCovid19(level = "world")
 }
 
 }

@@ -1,5 +1,6 @@
 ## Test environments
-* local OS X install, R 3.1.2
+* local ubuntu 20.04, R 4.0.2
+* travis: 1.1, 1.2, 1.3, oldrel, release, devel
 * r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
 * win-builder (devel and release)
 

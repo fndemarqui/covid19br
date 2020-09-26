@@ -1,15 +1,15 @@
+# Internal function used to download data (at Brazilian level) from the official Brazilian repository
+downloadMS <- function(){
 
-# Function to download data (at Brazilian level) from the official Brazilian's repository
-downloadBR <- function(language = "en"){
-  message("Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/")
-  message("Please, be patient!!!")
   url <- "https://xx9p7hp1p7.execute-api.us-east-1.amazonaws.com/prod/PortalGeral"
   covid <- GET(url, add_headers("x-parse-application-id" = "unAFkcaNDeXajurGB7LChj8SgQYS2ptm"))
   results <- covid %>% content()
+
   url_data <- results$results[[1]]$arquivo$url
   cities <- openxlsx::read.xlsx(url_data, detectDates = TRUE) %>%
     as_tibble()
 
+  last_updated <- lubridate::as_datetime((results$results[[1]]$dt_atualizacao))
 
   cities <- cities %>%
     rename(
@@ -75,11 +75,37 @@ downloadBR <- function(language = "en"){
       pop = sum(.data$pop)
     )
 
-
-
   cities <- slice(cities, -out)
 
-  covid <- list(brazil = brazil, regions = regions, states = states, cities = cities)
+  na <- is.na(cities$city)
+  aux <- c(which(na==FALSE), which(na==TRUE))
+  cities <- slice(cities, aux)
+
+  setwd(path)
+  saveRDS(brazil, "data/brazil.rds")
+  saveRDS(regions, "data/regions.rds")
+  saveRDS(states, "data/states.rds")
+  saveRDS(cities, "data/cities.rds")
+
+}
+
+# Internal function to download Brazilian data from the github repository held by the Department of Statistics of the Universidade Federal de Minas Gerais (UFMG).
+downloadBR <- function(language = "en", mr){
+  # message("Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/")
+  # message("Please, be patient!!!")
+
+  url_brazil <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/brazil.rds?raw=true"
+  url_regions <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/regions.rds?raw=true"
+  url_states <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/states.rds?raw=true"
+  url_cities <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/cities.rds?raw=true"
+
+
+  covid <- switch (mr,
+    brazil = readRDS(url(url_brazil)),
+    regions = readRDS(url(url_regions)),
+    states = readRDS(url(url_states)),
+    cities = readRDS(url(url_cities))
+  )
   setattr(covid, "language", "en")
   setattr(covid, "source", "https://covid.saude.gov.br/")
 
@@ -183,24 +209,28 @@ downloadWorld <- function(language = "en"){
 #' Function to download COVID-19 data from web repositories
 #' @aliases downloadCovid
 #' @export
-#' @param from repository from which the data will be downloaded: "brazil" (default) "world".
-#' @return when the Brazilian repository is chosen the function returns a list containing the downloaded COVID-19 Brazilian data organized by country, region, state, and city levels; otherwise, the function returns a tibble with the downloaded data at the world-level.
-#' @description This function downloads the pandemic COVID-19 data from two different repositories: the official Brazilian's repository maintained by the Brazilian Government (https://covid.saude.gov.br), which contains data of the pandemic in Brazil at country/state/region/city levels, and from the John Hopkins University's repository (https://github.com/CSSEGISandData/COVID-19), which has been widely used around the world as a reliable source of data information on the COVID-19 pandemic at a global level.
+#' @param level the desired level of data aggregation:  "brazil" (default), "regions", "states", "cities", and "world".
+#' @return a tibble containing the downloaded data at the specified level.
+#' @description This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
+#' @details The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in a single xlsx file. That file contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (over 4G), the data is daily downloaded with the internal function  \code{downloadMS}, and then made available in smaller/lighter binary files at a GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
 #' @examples
 #' \donttest{
 #' library(covid19br)
 #'
 #' # Downloading Brazilian COVID-19 data:
-#' brazil <- downloadCovid19(from = "brazil")
+#' brazil <- downloadCovid19(level = "brazil")
+#' regions <- downloadCovid19(level = "regions")
+#' states <- downloadCovid19(level = "states")
+#' cities <- downloadCovid19(level = "cities")
 #'
 #' # Downloading world COVID-19 data:
-#' world <- downloadCovid19(from = "world")
+#' world <- downloadCovid19(level = "world")
 #' }
 #'
-downloadCovid19 <- function(from=c("brazil", "world")){
-  from <- match.arg(from)
-  mydata <- switch(from,
-                   "brazil" = downloadBR(language = "en"),
+downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "world")){
+  mr <- match.arg(level)
+  mydata <- switch(level,
+                   "brazil" = downloadBR(language = "en", mr),
                    "world" = downloadWorld(language = "en"))
   return(mydata)
 }

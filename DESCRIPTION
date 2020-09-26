@@ -15,7 +15,7 @@ Authors@R:
       family = "Costa", 
       email = "matheus_belo@id.uff.br", 
       role = "ctb"))
-Description: Function to automatically import  Brazilian COVID-19 pandemic data into R. Brazilian data is available on the country-level, region-level, state-level, and city-level, and are downloaded from the official Brazilian repository at <https://covid.saude.gov.br/>. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
+Description: Set of functions to import COVID-19 pandemic data into R. The Brazilian COVID-19 data, obtained from the official Brazilian repository at <https://covid.saude.gov.br/>, is available at country, region, state, and city-levels. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
 URL: https://github.com/fndemarqui/covid19br
 BugReports: https://github.com/fndemarqui/covid19br/issues
 Encoding: UTF-8

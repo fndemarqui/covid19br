@@ -81,11 +81,8 @@ downloadMS <- function(){
   aux <- c(which(na==FALSE), which(na==TRUE))
   cities <- slice(cities, aux)
 
-  setwd(path)
-  saveRDS(brazil, "data/brazil.rds")
-  saveRDS(regions, "data/regions.rds")
-  saveRDS(states, "data/states.rds")
-  saveRDS(cities, "data/cities.rds")
+  covid <- list(brazil=brazil, regions=regions, states=states, cities=cities)
+  return(covid)
 
 }
 

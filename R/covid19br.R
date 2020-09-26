@@ -1,4 +1,4 @@
-#' The 'covid19br' package.
+#' Brazilian COVID-19 Pandemic Data.
 #'
 #' @importFrom rlang .data
 #' @importFrom dplyr %>%

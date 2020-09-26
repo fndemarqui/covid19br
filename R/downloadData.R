@@ -226,9 +226,11 @@ downloadWorld <- function(language = "en"){
 #'
 downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "world")){
   mr <- match.arg(level)
-  mydata <- switch(level,
-                   "brazil" = downloadBR(language = "en", mr),
-                   "world" = downloadWorld(language = "en"))
+  if(level=="world"){
+    mydata <- downloadWorld(language = "en")
+  }else{
+    mydata <- downloadBR(language = "en", mr)
+  }
   return(mydata)
 }
 

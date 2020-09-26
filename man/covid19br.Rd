@@ -3,7 +3,7 @@
 \docType{package}
 \name{covid19br}
 \alias{covid19br}
-\title{The 'covid19br' package.}
+\title{Brazilian COVID-19 Pandemic Data.}
 \description{
 The package provides a function to automatically import  Brazilian CODID-19 pandemic data into R. Brazilian data is available on the country, region, state, and city levels, and are obtained from the official Brazilian repository at <https://covid.saude.gov.br/>. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
 }

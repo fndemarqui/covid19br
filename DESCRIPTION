@@ -27,7 +27,7 @@ Imports:
     dplyr,
     httr,
     lubridate,
-    openxlsx,
+    rio,
     rlang,
     R.utils,
     tidyr

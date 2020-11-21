@@ -1,15 +1,16 @@
 
 
 usethis::use_build_ignore("inst/script_development.R")
-# usethis::use_travis()
+#usethis::use_travis()
 
 #-------------------------------------------------------------------------------
 # construindo o pacote:
 devtools::document()
 devtools::install()
 devtools::load_all()
-devtools::build_manual()
-devtools::build()
+
+# devtools::build_manual()
+# devtools::build()
 
 
 #-------------------------------------------------------------------------------
@@ -24,6 +25,10 @@ devtools::check_rhub(email = "fndemarqui@gmail.com")
 devtools::release_checks()
 devtools::spell_check()
 
+devtools::submit_cran()
+
+# depois de subir para o CRAN:
+usethis::use_github_release()
 
 # # …or push an existing repository from the command line
 # git remote add origin https://github.com/fndemarqui/covid19br.git

@@ -27,9 +27,9 @@ Imports:
     dplyr,
     httr,
     lubridate,
+    sf,
     rio,
     rlang,
-    R.utils,
     tidyr
 Suggests: 
   testthat,

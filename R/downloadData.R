@@ -98,111 +98,41 @@ downloadBR <- function(language = "en", mr){
   message("Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/")
   message("Please, be patient...")
 
-  # url_brazil <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/brazil.rds?raw=true"
-  # url_regions <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/regions.rds?raw=true"
-  # url_states <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/states.rds?raw=true"
-  # url_cities <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/cities.rds?raw=true"
+  url_brazil <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/brazil.rds?raw=true"
+  url_regions <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/regions.rds?raw=true"
+  url_states <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/states.rds?raw=true"
+  url_cities <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/cities.rds?raw=true"
 
 
-  url <- "https://xx9p7hp1p7.execute-api.us-east-1.amazonaws.com/prod/PortalGeral"
-  covid <- GET(url, add_headers("x-parse-application-id" = "unAFkcaNDeXajurGB7LChj8SgQYS2ptm"))
-  results <- covid %>% content()
+  # covid <- switch(mr,
+  #   brazil = try(readRDS(url(url_brazil)), TRUE),
+  #   regions = try(readRDS(url(url_regions)), TRUE),
+  #   states = try(readRDS(url(url_states)), TRUE),
+  #   cities = try(readRDS(url(url_cities)), TRUE)
+  # )
+  #
+  #
+  # if(suppressWarnings(class(covid)[1]=="try-error")){
+  #   message("The data is currently unavailable. Please, try again later.")
+  #   return(dplyr::tibble())
+  # }else{
+  #   message(" Done!")
+  #   setattr(covid, "language", "en")
+  #   setattr(covid, "source", "https://covid.saude.gov.br/")
+  #   return(covid)
+  # }
 
-  last_updated <- lubridate::dmy_hm(results$results[[1]]$dt_atualizacao, tz = "America/Sao_Paulo")
-
-  url_data <- results$results[[1]]$arquivo$url
-  cities <- rio::import(url_data) %>%
-    as_tibble()
-
-  last_updated <- lubridate::as_datetime((results$results[[1]]$dt_atualizacao))
-
-  cities <- cities %>%
-    rename(
-      region = .data$regiao,
-      state = .data$estado,
-      city = .data$municipio,
-      state_code = .data$coduf,
-      city_code = .data$codmun,
-      date = .data$data,
-      healthRegion = .data$nomeRegiaoSaude,
-      healthRegion_code = .data$codRegiaoSaude,
-      newRecovered = .data$Recuperadosnovos,
-      newFollowup = .data$emAcompanhamentoNovos,
-      metrop_area = .data$`interior/metropolitana`,
-      epi_week = .data$semanaEpi,
-      accumCases = .data$casosAcumulado,
-      accumDeaths = .data$obitosAcumulado,
-      newCases = .data$casosNovos,
-      newDeaths = .data$obitosNovos,
-      pop = .data$populacaoTCU2019) %>%
-    mutate(
-      date = as.Date(.data$date),
-      epi_week = as.integer(.data$epi_week),
-      accumCases = as.integer(.data$accumCases),
-      accumDeaths = as.integer(.data$accumDeaths),
-      pop = as.numeric(.data$pop),
-      region = recode(.data$region,
-                      Norte = "North",
-                      Nordeste = "Northeast",
-                      Sudeste = "Southeast",
-                      Sul = "South",
-                      'Centro-Oeste' = "Midwest")
-    )
-
-
-  brazil <- cities %>%
-    filter(.data$region == "Brasil") %>%
-    select(.data$date, .data$epi_week, .data$newCases, .data$accumCases, .data$newDeaths,
-           .data$accumDeaths, .data$newRecovered, .data$newFollowup, .data$pop)
-
-
-
-  cities <- cities %>%
-    filter(.data$region != "Brasil")
-  out <- 1:(27*nrow(brazil))
-
-  states <- cities %>%
-    slice(out) %>%
-    select(.data$region, .data$state, .data$date, .data$epi_week, .data$newCases,
-           .data$accumCases, .data$newDeaths, .data$accumDeaths, .data$newRecovered,
-           .data$newFollowup, .data$pop, .data$state_code)
-
-
-  regions <- states %>%
-    group_by(.data$region, .data$date, .data$epi_week) %>%
-    summarise(
-      newCases = sum(.data$newCases),
-      accumCases = sum(.data$accumCases),
-      newDeaths = sum(.data$newDeaths),
-      accumDeaths = sum(.data$accumDeaths),
-      newRecovered = sum(.data$newRecovered),
-      newFollowup = sum(.data$newFollowup),
-      pop = sum(.data$pop)
-    )
-
-  cities <- slice(cities, -out)
-
-  na <- is.na(cities$city)
-  aux <- c(which(na==FALSE), which(na==TRUE))
-  cities <- slice(cities, aux)
-  covid <- switch (mr,
-    brazil = set_data_attributes(brazil, last_updated),
-    regions = set_data_attributes(regions, last_updated),
-    states = set_data_attributes(states, last_updated),
-    cities = set_data_attributes(cities, last_updated)
+  covid <- switch(mr,
+                  brazil = try(readRDS(url(url_brazil)), TRUE),
+                  regions = try(readRDS(url(url_regions)), TRUE),
+                  states = try(readRDS(url(url_states)), TRUE),
+                  cities = try(readRDS(url(url_cities)), TRUE)
   )
 
-  # covid <- switch (mr,
-  #   brazil = readRDS(url(url_brazil)),
-  #   regions = readRDS(url(url_regions)),
-  #   states = readRDS(url(url_states)),
-  #   cities = readRDS(url(url_cities))
-  # )
-  # setattr(covid, "language", "en")
-  # setattr(covid, "source", "https://covid.saude.gov.br/")
-
-  message(" Done!")
+  setattr(covid, "language", "en")
+  setattr(covid, "source", "https://covid.saude.gov.br/")
   return(covid)
+
 }
 
 
@@ -295,8 +225,6 @@ downloadWorld <- function(language = "en"){
 
   setattr(world, "language", "en")
   setattr(world, "source", "https://github.com/CSSEGISandData/COVID-19")
-
-  message(" Done!")
   return(world)
 }
 
@@ -326,9 +254,15 @@ downloadWorld <- function(language = "en"){
 downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "world")){
   mr <- match.arg(level)
   if(level=="world"){
-    mydata <- downloadWorld(language = "en")
+    mydata <- try(downloadWorld(language = "en"), TRUE)
   }else{
-    mydata <- downloadBR(language = "en", mr)
+    mydata <- try(downloadBR(language = "en", mr), TRUE)
+  }
+  if(class(mydata)[1]=="try-error"){
+    message("Unfortunately the data is currently unavailable. Please, try again later.")
+    return(dplyr::tibble())
+  }else{
+    message(" Done!")
   }
   return(mydata)
 }

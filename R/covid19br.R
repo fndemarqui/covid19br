@@ -14,6 +14,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr relocate
 #' @importFrom dplyr slice
+#' @importFrom dplyr tibble
 #' @importFrom lubridate dmy
 #' @importFrom lubridate mdy
 #' @importFrom lubridate ymd

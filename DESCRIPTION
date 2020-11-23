@@ -21,7 +21,8 @@ BugReports: https://github.com/fndemarqui/covid19br/issues
 Encoding: UTF-8
 License: GPL (>= 2)
 Depends: 
-    R (>= 3.5.0)
+    R (>= 3.5.0),
+    sf
 Imports: 
     data.table,
     dplyr,

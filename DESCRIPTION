@@ -27,7 +27,6 @@ Imports:
     dplyr,
     httr,
     lubridate,
-    sf,
     rio,
     rlang,
     tidyr

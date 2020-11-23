@@ -12,7 +12,7 @@
 
 ### Bug fixes
 
-- nclusion of informative message in the downloadCovid19 when the data is temporarily not available.
+- inclusion of informative message in the downloadCovid19 when the data is temporarily not available.
 
 
 ---

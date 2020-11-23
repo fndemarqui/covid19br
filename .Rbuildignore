@@ -4,3 +4,5 @@
 ^CRAN-RELEASE$
 ^\.travis\.yml$
 ^inst/script_development\.R$
+^data$
+^R/data_doc\.R$

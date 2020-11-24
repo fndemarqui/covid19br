@@ -1,18 +1,14 @@
 
-# November 23 2020
+# November 24 2020
 
 ---
 
-## version 0.1.1
+## Version 0.1.1
 
-### New features
+### Bug fix
 
-- Inclusion of georeferenced data at world, region, state and city levels.
-
-
-### Bug fixes
-
-- inclusion of informative message in the downloadCovid19 when the data is temporarily not available.
+- Inclusion of an informative message in the downloadCovid19 function to notify 
+the user when the data is temporarily unavailable.
 
 
 ---

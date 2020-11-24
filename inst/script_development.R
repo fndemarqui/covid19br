@@ -1,6 +1,7 @@
 
 
 usethis::use_build_ignore("inst/script_development.R")
+usethis::use_git_ignore("inst/script_development.R")
 usethis::use_build_ignore("data")
 usethis::use_build_ignore("R/data_doc.R")
 #usethis::use_travis()
@@ -11,8 +12,8 @@ devtools::document()
 devtools::install()
 devtools::load_all()
 
-# devtools::build_manual()
-# devtools::build()
+devtools::build_manual()
+devtools::build()
 
 
 #-------------------------------------------------------------------------------

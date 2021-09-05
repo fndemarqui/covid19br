@@ -16,7 +16,7 @@ Authors@R:
       email = "matheus_belo@id.uff.br", 
       role = "ctb"))
 Description: Set of functions to import COVID-19 pandemic data into R. The Brazilian COVID-19 data, obtained from the official Brazilian repository at <https://covid.saude.gov.br/>, is available at country, region, state, and city-levels. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository.
-URL: https://github.com/fndemarqui/covid19br
+URL: https://fndemarqui.github.io/covid19br/
 BugReports: https://github.com/fndemarqui/covid19br/issues
 Encoding: UTF-8
 License: AGPL (>= 3)

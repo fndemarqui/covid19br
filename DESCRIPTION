@@ -29,6 +29,7 @@ Imports:
     lubridate,
     rio,
     rlang,
+    sf,
     tidyr
 Suggests: 
     rmarkdown,

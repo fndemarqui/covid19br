@@ -1,0 +1,39 @@
+---
+title: "Drawing maps with covid19br package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Drawing maps with covid19br package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=FALSE}
+
+
+
+library(covid19br)
+library(tidyverse)
+library(sf)
+
+states <- downloadCovid19("states")
+
+states  <- states %>%
+  filter(date == max(date)) %>%
+  left_join(ibgeStates, by = c("state_code", "state", "pop", "region")) %>%
+  st_as_sf()
+
+ggplot(states) +
+  geom_sf(aes(fill = pop)) 
+
+ggplot(states) +
+  geom_sf(aes(fill = pop)) +
+  scale_fill_gradient2(low = "red", high = "red", na.value = NA)
+
+```

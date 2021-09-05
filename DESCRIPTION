@@ -19,7 +19,7 @@ Description: Set of functions to import COVID-19 pandemic data into R. The Brazi
 URL: https://github.com/fndemarqui/covid19br
 BugReports: https://github.com/fndemarqui/covid19br/issues
 Encoding: UTF-8
-License: GPL (>= 2)
+License: AGPL (>= 3)
 Depends: 
     R (>= 3.5.0)
 Imports: 
@@ -31,7 +31,10 @@ Imports:
     rlang,
     tidyr
 Suggests: 
-  testthat,
-  tidyverse    
+    rmarkdown,
+    knitr,
+    testthat,
+    tidyverse
 LazyData: true
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr

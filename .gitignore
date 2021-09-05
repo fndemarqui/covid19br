@@ -3,3 +3,7 @@
 .RData
 .Ruserdata
 inst/script_development.R
+docs
+inst/doc
+/doc/
+/Meta/

@@ -1,3 +1,4 @@
+
 #' City-level georeferenced data
 #'
 #' @name ibgeCities
@@ -29,7 +30,6 @@ NULL
 
 
 #' State-level georeferenced data
-#'
 #' @name ibgeStates
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
@@ -54,7 +54,6 @@ NULL
 
 
 #' Region-level georeferenced data
-#'
 #' @name ibgeRegions
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
@@ -83,7 +82,6 @@ NULL
 
 
 #' World-level georeferenced data
-#'
 #' @name mundi
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

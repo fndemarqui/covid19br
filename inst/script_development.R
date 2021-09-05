@@ -2,18 +2,36 @@
 
 usethis::use_build_ignore("inst/script_development.R")
 usethis::use_git_ignore("inst/script_development.R")
-usethis::use_build_ignore("data")
-usethis::use_build_ignore("R/data_doc.R")
+# usethis::use_build_ignore("data")
+# usethis::use_build_ignore("R/data_doc.R")
 #usethis::use_travis()
 
 #-------------------------------------------------------------------------------
+
+## rodar apenas uma vez:
+# usethis::use_agpl3_license()
+# usethis::use_readme_rmd()
+# usethis::use_pkgdown()
+# usethis::use_vignette("covid19br", "Introduction to the covid19br package")
+
 # construindo o pacote:
-devtools::document()
+
+roxygen2::roxygenize()
 devtools::install()
 devtools::load_all()
+devtools::document(roclets = c('rd', 'collate', 'namespace'))
+
+
+devtools::build_vignettes()
+devtools::build_readme()
+devtools::build_site()
+usethis::use_github_action("pkgdown")
+
 
 devtools::build_manual()
 devtools::build()
+
+
 
 
 #-------------------------------------------------------------------------------

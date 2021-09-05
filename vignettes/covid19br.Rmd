@@ -37,7 +37,7 @@ The installation procedure described abouve requires the package ***devtools*** 
 We will get started by showing how to use the package to load into R data sets of the COVID-19 pandemic by downloading the COVID-19 data set from the official Brazilian repository [https://covid.saude.gov.br](https://covid.saude.gov.br)
 
 
-```{r, echo  = FALSE, include = FALSE, message = FALSE}
+```{r, message = FALSE}
 library(covid19br)
 library(tidyverse)
 

@@ -3,5 +3,6 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   covid19br: covid19br.html
-last_built: 2021-09-05T16:30Z
+  maps: maps.html
+last_built: 2021-09-05T17:24Z
 

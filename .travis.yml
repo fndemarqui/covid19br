@@ -2,3 +2,7 @@
 
 language: R
 cache: packages
+
+template:
+  params:
+    ganalytics: G-21X9JGRVGC

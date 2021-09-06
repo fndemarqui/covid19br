@@ -4,6 +4,6 @@
 
 # covid19br 0.1.2
 
-- Addition of georeferenced data:
-  - Brazil: city, state and region levels
-  - World: countries and continents
+- Addition of georeferenced data for Brazil (at city, state and region levels) and world (at country level).
+
+- Implementation of add_geo() function to add georeferenced data to the downloaded COVID19 data.

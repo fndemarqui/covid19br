@@ -14,7 +14,8 @@ add_geo <- function(data, ...){
     map <- switch (level,
                    "cities" = ibgeCities,
                    "states" = ibgeStates,
-                   "regions" = ibgeRegions
+                   "regions" = ibgeRegions,
+                   "world" = mundi
     )
     vars <- names(map)[names(map) %in% names(data)]
     newdata <- data %>%

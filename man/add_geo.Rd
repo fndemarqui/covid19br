@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{add_geo}
 \alias{add_geo}
-\title{Addition to Georeferenced data}
+\title{Adds georeferenced data to downloaded data}
 \usage{
 add_geo(data, ...)
 }
 \arguments{
-\item{data}{data set downloaded from covid19br::downloadCovid19() function.}
+\item{data}{a data set downloaded using the covid19br::downloadCovid19() function.}
 
 \item{...}{further arguments passed to other methods.}
 }
@@ -15,5 +15,5 @@ add_geo(data, ...)
 the data set with the added georeferenced data.
 }
 \description{
-Addition to Georeferenced data
+Adds georeferenced data to downloaded data
 }

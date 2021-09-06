@@ -14,7 +14,7 @@ usethis::use_git_ignore("inst/script_development.R")
 # usethis::use_pkgdown()
 # usethis::use_vignette("covid19br", "Introduction to the covid19br package")
 
-# token <- "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"
+
 
 # construindo o pacote:
 

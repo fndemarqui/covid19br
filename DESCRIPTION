@@ -26,7 +26,6 @@ Imports:
     data.table,
     dplyr,
     httr,
-    lubridate,
     rio,
     rlang,
     sf,
@@ -37,5 +36,5 @@ Suggests:
     testthat,
     tidyverse
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr

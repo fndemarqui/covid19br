@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{add_geo}
 \alias{add_geo}
-\title{Adds georeferenced data to downloaded data}
+\title{Adds georeferenced data to the downloaded data}
 \usage{
 add_geo(data, ...)
 }
@@ -15,5 +15,5 @@ add_geo(data, ...)
 the data set with the added georeferenced data.
 }
 \description{
-Adds georeferenced data to downloaded data
+Adds georeferenced data to the downloaded data
 }

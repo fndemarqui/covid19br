@@ -14,24 +14,114 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, message=FALSE}
+When dealing with epidemiological data, we are often interested in visualizing the data through different types of maps. Drawing maps in R nowadays is a simple task provided the necessary geometry to draw the map is available. 
 
+The `covid19br::add_geo()` function can be used to add the geometry to the downloaded data as follows:
 
+```{r, message=FALSE, fig.dim = c(7, 5)}
 
 library(covid19br)
 library(tidyverse)
-library(sf)
 
-states <- downloadCovid19("states") %>%
+# downloading data at state level:
+cities <- downloadCovid19("cities") 
+
+# adding the geometry to the data:
+cities_geo <- cities %>%
+  filter(date == max(date)) %>%
+  add_geo()
+
+# looking at the data:
+glimpse(cities_geo)
+
+```
+
+The map of the accumulated number of deaths by city can be easily drawn using the __ggplot2__ package as illustrated below:
+
+```{r, fig.dim = c(7, 5)}
+ggplot(cities_geo) +
+  geom_sf(aes(fill = accumDeaths)) 
+```
+
+Supose now that we want to investigate 
+
+```{r, fig.dim = c(7, 5)}
+
+mg <- cities_geo %>%
+  filter(state == "MG")
+
+ggplot(mg) +
+  geom_sf(aes(fill = accumDeaths))
+```
+
+
+
+```{r, message=FALSE, fig.dim = c(7, 5)}
+
+
+# downloading data at state level:
+states <- downloadCovid19("states") 
+
+# adding the geometry to the data:
+states_geo <- states %>%
+  filter(date == max(date)) %>%
+  add_geo() %>%
+  add_epi_info()
+
+# looking at the data:
+glimpse(states_geo)
+
+```
+
+It is also possible to
+
+```{r, fig.dim = c(7, 5)}
+library(leaflet)
+
+states_geo <- states %>%
+  filter(date == max(date)) %>%
+  add_geo() %>%
+  add_epi_info()
+
+reds = colorBin("Reds", domain = states_geo$lethality, bins = 5)
+mymap <- states_geo %>%
+  leaflet() %>%
+  addPolygons(fillOpacity = 1, 
+              weight = 1,
+              smoothFactor = 0.2,
+              color = ~ reds(lethality),
+              popup = paste0(states_geo$state, ":  ",  states_geo$lethality, 2)
+  ) %>%
+  addLegend(position = "bottomright", 
+            pal = reds, values = ~states_geo$lethality, 
+            title = "lethality")
+mymap  
+
+```
+
+
+```{r, fig.dim = c(7, 5)}
+regions <- downloadCovid19("regions") %>%
   filter(date == max(date)) %>%
   add_geo()
 
 
-ggplot(states) +
-  geom_sf(aes(fill = log(accumDeaths))) 
-
-ggplot(states) +
+ggplot(regions) +
   geom_sf(aes(fill = log(accumDeaths))) +
   scale_fill_gradient2(low = "red", high = "red", na.value = NA)
-
 ```
+
+
+Depending on the computer in use, the R session might crash if the geometry is added to the whole downloaded data set (this is particularly true for the data set at the city level) due to the lack of RAM. Therefore, we advise the users to filter the data by a desirable date before the addition of the geometry.
+
+
+```{r, fig.dim = c(7, 5)}
+world <- downloadCovid19("world") %>%
+  filter(date == max(date)) %>%
+  add_geo()
+
+ggplot(world) +
+  geom_sf(aes(fill = log(accumDeaths))) + 
+  theme(legend.position="bottom")
+```
+

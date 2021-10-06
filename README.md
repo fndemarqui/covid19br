@@ -32,17 +32,15 @@ devtools::install_github("fndemarqui/covid19br")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Downloading COVID-19 pandemic data:
 
 ``` r
 library(covid19br)
 library(tidyverse)
 
 brazil <- downloadCovid19("brazil")
-
-ggplot(brazil, aes(x = date, y = accumDeaths)) +
-  geom_point() +
-  geom_path()
+regions <- downloadCovid19("regions")
+states <- downloadCovid19("states")
+cities <- downloadCovid19("cities")
+world <- downloadCovid19("world")
 ```
-
-<img src="man/figures/README-example-1.png" width="100%" />

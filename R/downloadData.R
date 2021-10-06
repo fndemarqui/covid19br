@@ -1,5 +1,4 @@
 
-
 set_data_attributes <- function(data, last_updated){
   setattr(data, "language", "en")
   setattr(data, "source", "https://covid.saude.gov.br/")
@@ -70,7 +69,7 @@ downloadWorld <- function(language = "en"){
     rename(country = 'Country/Region')  %>%
     pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumDeaths") %>%
-    mutate(date = mdy(.data$date)) %>%
+    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
     group_by(.data$country, .data$date) %>%
     summarise(accumDeaths = sum(.data$accumDeaths))
 
@@ -78,7 +77,7 @@ downloadWorld <- function(language = "en"){
     rename(country = 'Country/Region')  %>%
     pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumCases") %>%
-    mutate(date = mdy(.data$date)) %>%
+    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
     group_by(.data$country, .data$date) %>%
     summarise(accumCases = sum(.data$accumCases))
 
@@ -86,7 +85,7 @@ downloadWorld <- function(language = "en"){
     rename(country = 'Country/Region')  %>%
     pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
                  names_to = "date", values_to = "accumRecovered") %>%
-    mutate(date = mdy(.data$date)) %>%
+    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
     group_by(.data$country, .data$date) %>%
     summarise(accumRecovered = sum(.data$accumRecovered))
 
@@ -98,11 +97,12 @@ downloadWorld <- function(language = "en"){
   world <- world %>%
     group_by(.data$country) %>%
     mutate(
-      epi_week = epiweek(.data$date),
+      #epi_week = epiweek(.data$date),
       newCases = diff(c(0, .data$accumCases)),
       newDeaths = diff(c(0, .data$accumDeaths)),
       newRecovered = diff(c(0, .data$accumRecovered))) %>%
-    relocate(.data$country, .data$date, .data$epi_week)
+    #relocate(.data$country, .data$date, .data$epi_week)
+    relocate(.data$country, .data$date)
 
   # trying to attenuate error on the data base due to non increasing accummulative counts:
   world$newCases[world$newCases < 0] <- 0

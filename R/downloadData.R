@@ -16,25 +16,6 @@ downloadBR <- function(language = "en", mr){
   url_states <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/states.rds?raw=true"
   url_cities <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/cities.rds?raw=true"
 
-
-  # covid <- switch(mr,
-  #   brazil = try(readRDS(url(url_brazil)), TRUE),
-  #   regions = try(readRDS(url(url_regions)), TRUE),
-  #   states = try(readRDS(url(url_states)), TRUE),
-  #   cities = try(readRDS(url(url_cities)), TRUE)
-  # )
-  #
-  #
-  # if(suppressWarnings(class(covid)[1]=="try-error")){
-  #   message("The data is currently unavailable. Please, try again later.")
-  #   return(dplyr::tibble())
-  # }else{
-  #   message(" Done!")
-  #   setattr(covid, "language", "en")
-  #   setattr(covid, "source", "https://covid.saude.gov.br/")
-  #   return(covid)
-  # }
-
   covid <- switch(mr,
                   brazil = try(readRDS(url(url_brazil)), TRUE),
                   regions = try(readRDS(url(url_regions)), TRUE),
@@ -49,96 +30,16 @@ downloadBR <- function(language = "en", mr){
 }
 
 
-# Function to download data (at world level) from the Johns Hopkins University's repository
+# Internal function to download data (at world level) from the Johns Hopkins University's repository
 downloadWorld <- function(language = "en"){
   message("Downloading COVID-19 data from the Johns Hopkins University's repository")
   message("Please, be patient...")
 
-  url_confirmed <- "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_confirmed_global.csv&filename=time_series_covid19_confirmed_global.csv"
-  url_deaths <-    "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_deaths_global.csv&filename=time_series_covid19_deaths_global.csv"
-  url_recovered <- "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_recovered_global.csv&filename=time_series_covid19_recoverd_global.csv"
-
-  # confirmed <- fread(url_confirmed)
-  # deaths <- fread(url_deaths)
-  # recovered <- fread(url_recovered)
-  confirmed <- rio::import(url_confirmed)
-  deaths <- rio::import(url_deaths)
-  recovered <- rio::import(url_recovered)
-
-  deaths <- deaths %>%
-    rename(country = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
-                 names_to = "date", values_to = "accumDeaths") %>%
-    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
-    group_by(.data$country, .data$date) %>%
-    summarise(accumDeaths = sum(.data$accumDeaths))
-
-  confirmed <- confirmed %>%
-    rename(country = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
-                 names_to = "date", values_to = "accumCases") %>%
-    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
-    group_by(.data$country, .data$date) %>%
-    summarise(accumCases = sum(.data$accumCases))
-
-  recovered <- recovered %>%
-    rename(country = 'Country/Region')  %>%
-    pivot_longer(cols = -c("Province/State", "country", "Lat", "Long"),
-                 names_to = "date", values_to = "accumRecovered") %>%
-    mutate(date = as.Date(.data$date, format = "%d/%m/%y")) %>%
-    group_by(.data$country, .data$date) %>%
-    summarise(accumRecovered = sum(.data$accumRecovered))
-
-
-  world <- confirmed %>%
-    full_join(deaths, by=c("country", "date")) %>%
-    full_join(recovered, by=c("country", "date"))
-
-  world <- world %>%
-    group_by(.data$country) %>%
-    mutate(
-      #epi_week = epiweek(.data$date),
-      newCases = diff(c(0, .data$accumCases)),
-      newDeaths = diff(c(0, .data$accumDeaths)),
-      newRecovered = diff(c(0, .data$accumRecovered))) %>%
-    #relocate(.data$country, .data$date, .data$epi_week)
-    relocate(.data$country, .data$date)
-
-  # trying to attenuate error on the data base due to non increasing accummulative counts:
-  world$newCases[world$newCases < 0] <- 0
-  world$newDeaths[world$newDeaths < 0] <- 0
-  world$newRecovered[world$newRecovered < 0] <- 0
-
-  #-----------------------------------------------------------------------------------------------------
-  # Changing the names of the countries for compatility with the map:
-  world$`country`<-as.character(world$`country`)
-  world$'country'[world$'country'=="US"]<- "United States of America"
-  world$'country'[world$'country'=="Antigua and Barbuda"]<-"Antigua and Barb."
-  world$'country'[world$'country'=="Bosnia and Herzegovina"]<- "Bosnia and Herz."
-  world$'country'[world$'country'=="Central African Republic"]<-"Central African Rep."
-#  world$'country'[world$'country'=="Cote d'Ivoire"]<- "Côte d'Ivoire"
-  world$'country'[world$'country'=="Dominican Republic"]<- "Dominican Rep."
-  world$'country'[world$'country'=="Equatorial Guinea"]<-"Eq. Guinea"
-  world$'country'[world$'country'=="Eswatini"]<-"eSwatini"
-  world$'country'[world$'country'=="Holy See"]<-"Vatican"
-  world$'country'[world$'country'=="Korea, South"]<- "South Korea"
-  world$'country'[world$'country'=="South Sudan"]<-"S. Sudan"
-  world$'country'[world$'country'=="Western Sahara"]<-"W. Sahara"
-#  world$'country'[world$'country'=="Sao Tome and Principe"]<- "São Tomé and Principe"
-  world$'country'[world$'country'=="North Macedonia"]<- "Macedonia"
-  world$'country'[world$'country'=="Saint Vincent and the Grenadines"]<-"St. Vin. and Gren."
-  world$'country'[world$'country'=="Saint Kitts and Nevis"]<-"St. Kitts and Nevis"
-  world$'country'[world$'country'=="Taiwan*"]<-"Taiwan"
-  world$'country'[world$'country'=="Burma"]<-"Myanmar"
-  world$'country'[world$'country'=="Congo (Kinshasa)"]<-"Dem. Rep. Congo"
-  world$'country'[world$'country'=="Congo (Brazzaville)"]<-"Congo"
-  world$'country'[world$'country'=="West Bank and Gaza"]<-"Palestine" # Cisjordania e faixa de gaza
-  #-----------------------------------------------------------------------------------------------------
-
-  class(world) <-  class(world)[-1]
-
+  url_world <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/world.rds?raw=true"
+  world <- try(readRDS(url(url_world)), TRUE)
   setattr(world, "language", "en")
   setattr(world, "source", "https://github.com/CSSEGISandData/COVID-19")
+
   return(world)
 }
 

@@ -59,17 +59,11 @@ NULL
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
 #' @description Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on region level.
-#' @format A data frame with 5570 rows and 10 variables:
+#' @format A data frame with 5 rows and 4 variables:
 #' \itemize{
 #'   \item region: regions' names
-#'   \item state: states' names.
-#'   \item city: cities' names.
 #'   \item pop: estimated population in 2019.
 #'   \item region_code: numerical code attributed to regions
-#'   \item state_code: numerical code attributed to states
-#'   \item mesoregion_code: numerical code attributed to mesoregions
-#'   \item microregion_code: numerical code attributed to microregions
-#'   \item city_code: numerical code attributed to cities
 #'   \item geometry: georeferenced data needed to plot maps.
 #' }
 #' @source Instituto Brasileiro de Geografia e Estatística (IBGE):

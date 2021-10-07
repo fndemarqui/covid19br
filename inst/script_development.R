@@ -41,10 +41,11 @@ devtools::build()
 
 devtools::check()
 devtools::check_win_devel()
+1
 devtools::check_win_release()
 devtools::test()
 
-devtools::check_rhub(email = "fndemarqui@gmail.com")
+devtools::check_rhub(email = "fndemarqui@est.ufmg.br")
 devtools::release_checks()
 devtools::spell_check()
 

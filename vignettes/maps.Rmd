@@ -1,8 +1,9 @@
 ---
-title: "Drawing maps with the covid19br package"
+title: "Drawing maps with the package covid19br"
 output: rmarkdown::html_vignette
+author: Fábio N. Demarqui
 vignette: >
-  %\VignetteIndexEntry{Drawing maps with the covid19br package}
+  %\VignetteIndexEntry{Drawing maps with the package covid19br}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,9 +15,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-When dealing with epidemiological data, we are often interested in visualizing the data through different types of maps. Drawing maps in R nowadays is a simple task provided the necessary geometry to draw the map is available. 
+When dealing with epidemiological data, we are often interested in visualizing the data through different types of maps. Drawing maps in R nowadays is a simple task provided the necessary geometry is available along with the data. 
 
-The `covid19br::add_geo()` function can be used to add the geometry to the downloaded data as follows:
+The function `covid19br::add_geo()` can be used to add the geometry to the downloaded data as follows:
 
 ```{r, message=FALSE, fig.dim = c(7, 5)}
 
@@ -36,28 +37,29 @@ glimpse(cities_geo)
 
 ```
 
-The map of the accumulated number of deaths by city can be easily drawn using the __ggplot2__ package as illustrated below:
+The map of the accumulated number of deaths by city can be easily drawn using the package __ggplot2__ as illustrated below:
 
 ```{r, fig.dim = c(7, 5)}
 ggplot(cities_geo) +
   geom_sf(aes(fill = accumDeaths)) 
 ```
 
-Supose now that we want to investigate 
+Suppose now that we want to draw a map with the incidence of the COVID-19 in the cities belonging to Minas Gerais (MG) state. This can be done as follows:
 
 ```{r, fig.dim = c(7, 5)}
 
 mg <- cities_geo %>%
-  filter(state == "MG")
+  filter(state == "MG") %>%
+  add_epi_rates()
 
 ggplot(mg) +
-  geom_sf(aes(fill = accumDeaths))
+  geom_sf(aes(fill = incidence)) 
 ```
 
-
+Next, we will show how to draw interactive maps using the package __leaflet__. As an illustration, we will consider the lethality by states:
 
 ```{r, message=FALSE, fig.dim = c(7, 5)}
-
+library(leaflet)
 
 # downloading data at state level:
 states <- downloadCovid19("states") 
@@ -66,22 +68,10 @@ states <- downloadCovid19("states")
 states_geo <- states %>%
   filter(date == max(date)) %>%
   add_geo() %>%
-  add_epi_info()
+  add_epi_rates()
 
 # looking at the data:
 glimpse(states_geo)
-
-```
-
-It is also possible to
-
-```{r, fig.dim = c(7, 5)}
-library(leaflet)
-
-states_geo <- states %>%
-  filter(date == max(date)) %>%
-  add_geo() %>%
-  add_epi_info()
 
 reds = colorBin("Reds", domain = states_geo$lethality, bins = 5)
 mymap <- states_geo %>%
@@ -100,28 +90,56 @@ mymap
 ```
 
 
-```{r, fig.dim = c(7, 5)}
-regions <- downloadCovid19("regions") %>%
-  filter(date == max(date)) %>%
-  add_geo()
-
-
-ggplot(regions) +
-  geom_sf(aes(fill = log(accumDeaths))) +
-  scale_fill_gradient2(low = "red", high = "red", na.value = NA)
-```
-
-
 Depending on the computer in use, the R session might crash if the geometry is added to the whole downloaded data set (this is particularly true for the data set at the city level) due to the lack of RAM. Therefore, we advise the users to filter the data by a desirable date before the addition of the geometry.
 
+For the next example we will draw a bubble map with the 27 capitals of brazilian states.
+
+```{r, fig.dim = c(7, 5)}
+library(sf)
+library(ggrepel)
+
+# getting the data:
+capitals <- downloadCovid19("cities") %>%
+  filter(date == max(date), capital == TRUE) %>%
+  add_geo() %>%
+  add_epi_rates()
+
+# adding the coordinates associated with each capital:
+capitals <- cbind(capitals, st_coordinates(st_centroid(capitals)))  
+# looking at the data:
+glimpse(capitals)  
+
+# drawing some maps:
+incidence <- ggplot() +
+  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_point(data = capitals, aes(x=X, y=Y, size=incidence, alpha=incidence), color = "orange") +
+  geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
+incidence
+
+mortality <- ggplot() +
+  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_point(data = capitals, aes(x=X, y=Y, size=mortality, alpha=mortality), color = "red") +
+  geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
+mortality
+
+lethality <- ggplot() +
+  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_point(data = capitals, aes(x=X, y=Y, size=lethality, alpha=lethality), color = "darkred") +
+  geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
+lethality
+
+```
+
+Maps involving world data of COVID-19 pandemic can be draw similarly to the previous examples shown in this vignette. Below we present a simple example:
 
 ```{r, fig.dim = c(7, 5)}
 world <- downloadCovid19("world") %>%
   filter(date == max(date)) %>%
-  add_geo()
+  add_geo() %>%
+  add_epi_rates()
 
 ggplot(world) +
-  geom_sf(aes(fill = log(accumDeaths))) + 
+  geom_sf(aes(fill = lethality)) + 
+  scale_fill_gradient2(low = "red", high = "darkred", na.value = NA) +
   theme(legend.position="bottom")
 ```
-

@@ -1,8 +1,8 @@
 ---
-title: "Introduction to the covid19br package"
+title: "Introduction to the R package covid19br"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to the covid19br package}
+  %\VignetteIndexEntry{Introduction to the R package covid19br}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-This vignette shows how to use the **covid19br** R package for downloading and exploring data from the COVID-19 pandemic in Brazil and the globe as well. The package downloads data bases from the following repositories:
+This vignette shows how to use the  R package __covid19br__ for downloading and exploring data from the COVID-19 pandemic in Brazil and the globe as well. The package downloads data bases from the following repositories:
 
 - The official brazilian repository provided by the brazilian government: [https://covid.saude.gov.br](https://covid.saude.gov.br); 
 
@@ -26,26 +26,123 @@ The last repository has data on the COVID-19 pandemic in the global level (daily
 
 We hope that this package may be helpful to other researchers and scientists to understand and fight this terrible epidemic that has been plaguing the world.
 
-# Package installation
 
-The development version of the  R package ***covid19br*** can be found at [github.com/fndemarqui/covid19br](https://github.com/fndemarqui/covid19br), and it can be installed using the following command line in R: devtools::install_github("fndeamrqui/covid19br"). 
-
-The installation procedure described abouve requires the package ***devtools*** to be previously installed in R.
-
-# Getting started with covid19br R package
+# Getting started with R package covid19br
 
 We will get started by showing how to use the package to load into R data sets of the COVID-19 pandemic by downloading the COVID-19 data set from the official Brazilian repository [https://covid.saude.gov.br](https://covid.saude.gov.br)
 
 
-```{r, message = FALSE}
+```{r, message = FALSE, fig.dim=c(7, 5)}
 library(covid19br)
 library(tidyverse)
 
+# downloading the data (at national level):
 brazil <- downloadCovid19("brazil")
 
+# looking at the downloaded data:
+glimpse(brazil)
+
+# plotting the accumulative number of deaths:
 ggplot(brazil, aes(x = date, y = accumDeaths)) +
   geom_point() +
   geom_path()
 
+```
+
+Next, will show how to draw a plot with the daily count of new deaths along with its respective moving averarge. Here, we will use the `pracma::movavg()` function to compute the moving average.
+
+```{r, message = FALSE}
+library(pracma)
+
+# computing the moving average:
+brazil <- brazil %>%
+  mutate(
+    ma_newDeaths = movavg(newDeaths, n = 7, type = "s")
+  )
+
+# looking at the transformed data:
+glimpse(brazil)
+```
+
+After computing the desired moving average, it is convenient to reorganize the data to fit the so-called tidy data format. This task can be easily done with the aid of the function pivot_long():
+
+```{r, message = FALSE, fig.dim=c(7, 5)}
+deaths <- brazil %>%
+  select(date, newDeaths, ma_newDeaths) %>%
+  pivot_longer(
+    cols = c("newDeaths", "ma_newDeaths"),
+    values_to = "deaths", names_to = "type"
+  ) %>%
+  mutate(
+    type = recode(type, 
+           ma_newDeaths = "moving average",
+           newDeaths = "count",
+    )
+  )
+
+# looking at the (tidy) data:
+glimpse(deaths)
+
+# drawing the desired plot:
+ggplot(deaths, aes(x = date, y=deaths, color = type)) +
+  geom_point() +
+  geom_path() + 
+  theme(legend.position="bottom")
 
 ```
+
+
+When dealing with epidemiological data we are often interested in computing quantities such as incidence, mortality and lethality rates. The function `covid19br::add_epi_rates()` can be used to add those rates to the downloaded data, is shown below:
+
+```{r, message = FALSE, fig.dim=c(7, 5)}
+library(plotly)
+
+# downloading the data (region level):
+regions <- downloadCovid19("regions") 
+
+# adding the rates to the downloaded data:
+regions <- regions %>%
+  add_epi_rates()
+
+# looking at the data:
+glimpse(regions)
+
+```
+
+The function `plotly::ggplotly()` can be used to draw an interactive plot as follows:
+
+```{r, message = FALSE, fig.dim=c(7, 5)}
+library(plotly)
+
+p <- ggplot(regions, aes(x = date, y = mortality, color = region)) +
+  geom_point() +
+  geom_path()
+
+ggplotly(p)
+```
+
+In our last example, we will obtain a table summarizing the  for the 27 brazilian capitals in `r max(brazil$date)`.
+
+```{r, message = FALSE}
+library(kableExtra)
+
+cities <- downloadCovid19("cities")
+
+capitals <- cities %>%
+  filter(capital == TRUE, date == max(date)) %>%
+  add_epi_rates() %>%
+  select(region, state, city, newCases, newDeaths, accumCases, accumDeaths, incidence, mortality, lethality) %>%
+  arrange(desc(lethality), desc(mortality), desc(incidence))
+
+# printing the table:
+capitals %>%
+ kable(
+    full_width = F,
+    caption = "Summary of the COVID-19 pandemic in the 27 capitals of brazilian states."
+  )
+
+
+```
+
+
+

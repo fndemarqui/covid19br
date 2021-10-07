@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds georeferenced data to downloaded data — add_geo • covid19br</title>
+<title>Adding the geometry to the downloaded data for drawing maps — add_geo • covid19br</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds georeferenced data to downloaded data — add_geo" />
-<meta property="og:description" content="Adds georeferenced data to downloaded data" />
+<meta property="og:title" content="Adding the geometry to the downloaded data for drawing maps — add_geo" />
+<meta property="og:description" content="This function adds the necessary geometry for drawing maps to a given data set downloaded by the covid19br::downloadCovid19() function." />
 
 
 
@@ -98,7 +98,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/maps.html">Drawing maps with the covid19br package</a>
+      <a href="../articles/maps.html">Drawing maps with the package covid19br</a>
     </li>
   </ul>
 </li>
@@ -126,13 +126,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds georeferenced data to downloaded data</h1>
+    <h1>Adding the geometry to the downloaded data for drawing maps</h1>
     <small class="dont-index">Source: <a href='https://github.com/fndemarqui/covid19br/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
     <div class="hidden name"><code>add_geo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds georeferenced data to downloaded data</p>
+    <p>This function adds the necessary geometry for drawing maps to a given data set downloaded by the covid19br::downloadCovid19() function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_geo</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -153,7 +153,22 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>the data set with the added georeferenced data.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>The function add_geo() was designed to work with the original names of the variables available in the data set downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any change in such variable names.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Fabio N. Demarqui <a href='mailto:fndemarqui@est.ufmg.br'>fndemarqui@est.ufmg.br</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://fndemarqui.github.io/covid19br/'>covid19br</a></span><span class='op'>)</span>
+
+<span class='va'>regions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='downloadCovid19.html'>downloadCovid19</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='st'>"regions"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span></div><div class='output co'>#&gt; <span class='message'>Please, be patient...</span></div><div class='output co'>#&gt; <span class='message'> Done!</span></div><div class='input'><span class='va'>regions_geo</span> <span class='op'>&lt;-</span> <span class='fu'>add_geo</span><span class='op'>(</span><span class='va'>regions</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

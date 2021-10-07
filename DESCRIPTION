@@ -5,7 +5,7 @@ Version: 0.1.2
 Authors@R: 
     c(person(given = "Fabio", 
       family = "Demarqui", 
-      email = "fndemarqui@gmail.com", 
+      email = "fndemarqui@est.ufmg.br", 
       role = c("aut", "cre")),
       person(given = "Cristiano", 
       family = "Santos", 
@@ -31,8 +31,12 @@ Imports:
     sf,
     tidyr
 Suggests: 
+    ggrepel,
+    kableExtra,
     knitr,
     leaflet,
+    pracma,
+    plotly,
     rmarkdown,
     testthat,
     tidyverse

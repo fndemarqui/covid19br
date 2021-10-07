@@ -51,7 +51,7 @@ downloadWorld <- function(language = "en"){
 #' @param level the desired level of data aggregation:  "brazil" (default), "regions", "states", "cities", and "world".
 #' @return a tibble containing the downloaded data at the specified level.
 #' @description This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
-#' @details The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in a single xlsx file. That file contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (over 4G), the data is daily downloaded with the internal function  \code{downloadMS}, and then made available in smaller/lighter binary files at a GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
+#' @details The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in multiple xlsx files. Those files contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (currently over 4G), the data is daily downloaded and then made available in smaller/lighter binary files on the GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
 #' @examples
 #' \donttest{
 #' library(covid19br)
@@ -67,6 +67,7 @@ downloadWorld <- function(language = "en"){
 #' }
 #'
 downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "world")){
+  level <- tolower(level)
   mr <- match.arg(level)
   if(level=="world"){
     mydata <- try(downloadWorld(language = "en"), TRUE)

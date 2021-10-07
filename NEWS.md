@@ -4,7 +4,11 @@
 
 # covid19br 0.1.2
 
-- Implementation of add_epi_info() function to add epidemiological rates (incidence, mortality and lethatity) to the downloaded COVID19 data.
+- Development of the package's webpage (https://fndemarqui.github.io/covid19br/)
+
+- Inclusion of 2 vignettes showing how to use the package.
+
+- Implementation of add_epi_rates() function to add epidemiological rates (incidence, mortality and lethatity) to the downloaded data.
 
 - Implementation of add_geo() function to add georeferenced data to the downloaded COVID19 data.
 

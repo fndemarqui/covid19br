@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{add_geo}
 \alias{add_geo}
-\title{Adds georeferenced data to the downloaded data}
+\title{Adding the geometry to the downloaded data for drawing maps}
 \usage{
 add_geo(data, ...)
 }
@@ -15,5 +15,20 @@ add_geo(data, ...)
 the data set with the added georeferenced data.
 }
 \description{
-Adds georeferenced data to the downloaded data
+This function adds the necessary geometry for drawing maps to a given data set downloaded by the covid19br::downloadCovid19() function.
+}
+\details{
+The function add_geo() was designed to work with the original names of the variables available in the data set downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any change in such variable names.
+}
+\examples{
+\donttest{
+library(covid19br)
+
+regions <- downloadCovid19(level = "regions")
+regions_geo <- add_geo(regions)
+}
+
+}
+\author{
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 }

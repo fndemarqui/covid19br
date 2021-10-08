@@ -98,3 +98,26 @@ NULL
 #' @source R package rnaturalearthdata.
 #'
 NULL
+
+
+#' Results of the 2018 presidential election in Brazil
+#' @name election2018
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @format A data frame with 5570 rows and 6 variables:
+#' \itemize{
+#'   \item Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+#'   \item Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+#'   \item pop: estimated population in 2019.
+#'   \item state: states' names.
+#'   \item city: cities' names.
+#'   \item city_code: numerical code attributed to cities
+#' }
+#' @source Tribunal Superior Eleitoral (TSE)
+#'   \itemize{
+#'     \item url: \url{https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1}
+#'
+#'   }
+NULL

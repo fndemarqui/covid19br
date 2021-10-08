@@ -49,7 +49,7 @@ ggplot(brazil, aes(x = date, y = accumDeaths)) +
 
 ```
 
-Next, will show how to draw a plot with the daily count of new deaths along with its respective moving averarge. Here, we will use the `pracma::movavg()` function to compute the moving average.
+Next, will show how to draw a plot with the daily count of new deaths along with its respective moving averarge. Here, we will use the function `pracma::movavg()` to compute the moving average.
 
 ```{r, message = FALSE}
 library(pracma)
@@ -92,7 +92,7 @@ ggplot(deaths, aes(x = date, y=deaths, color = type)) +
 ```
 
 
-When dealing with epidemiological data we are often interested in computing quantities such as incidence, mortality and lethality rates. The function `covid19br::add_epi_rates()` can be used to add those rates to the downloaded data, is shown below:
+When dealing with epidemiological data we are often interested in computing quantities such as incidence, mortality and lethality rates. The function `covid19br::add_epi_rates()` can be used to add those rates to the downloaded data, as shown below:
 
 ```{r, message = FALSE, fig.dim=c(7, 5)}
 library(plotly)

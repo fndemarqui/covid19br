@@ -13,6 +13,8 @@ A data frame with 27 rows and 6 variables:
   \item region_code: numerical code attributed to regions
   \item state_code: numerical code attributed to states
   \item geometry: georeferenced data needed to plot maps.
+  \item area: area (in Km^2) of the brazilian states.
+  \item demoDens: demographic density of the brazilian states.
 }
 }
 \source{

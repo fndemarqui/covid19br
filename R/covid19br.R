@@ -15,12 +15,9 @@
 #' @importFrom dplyr relocate
 #' @importFrom dplyr slice
 #' @importFrom dplyr tibble
-#' @importFrom httr GET
-#' @importFrom httr add_headers
 #' @importFrom data.table melt
 #' @importFrom data.table fread
 #' @importFrom data.table setattr
-#' @importFrom httr content
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr replace_na
 #'

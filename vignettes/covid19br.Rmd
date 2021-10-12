@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-This vignette shows how to use the  R package __covid19br__ for downloading and exploring data from the COVID-19 pandemic in Brazil and the globe as well. The package downloads data bases from the following repositories:
+This vignette shows how to use the  R package __covid19br__ for downloading and exploring data from the COVID-19 pandemic in Brazil and the globe as well. The package downloads datasets from the following repositories:
 
 - The official brazilian repository provided by the brazilian government: [https://covid.saude.gov.br](https://covid.saude.gov.br); 
 
@@ -95,7 +95,6 @@ ggplot(deaths, aes(x = date, y=deaths, color = type)) +
 When dealing with epidemiological data we are often interested in computing quantities such as incidence, mortality and lethality rates. The function `covid19br::add_epi_rates()` can be used to add those rates to the downloaded data, as shown below:
 
 ```{r, message = FALSE, fig.dim=c(7, 5)}
-library(plotly)
 
 # downloading the data (region level):
 regions <- downloadCovid19("regions") 

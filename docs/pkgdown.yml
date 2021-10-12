@@ -3,6 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   covid19br: covid19br.html
+  election2018: election2018.html
   maps: maps.html
-last_built: 2021-10-08T11:12Z
+last_built: 2021-10-11T21:59Z
 

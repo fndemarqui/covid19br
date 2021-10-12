@@ -2,6 +2,8 @@
 
 usethis::use_build_ignore("inst/script_development.R")
 usethis::use_git_ignore("inst/script_development.R")
+usethis::use_build_ignore("doc")
+#usethis::use_build_ignore("docs")
 # usethis::use_build_ignore("data")
 # usethis::use_build_ignore("R/data_doc.R")
 #usethis::use_travis()
@@ -33,15 +35,15 @@ usethis::use_github_action("pkgdown")
 devtools::build_manual()
 devtools::build()
 
-
-
+# IDH 2010
+# https://www.ipea.gov.br/ipeageo/bases.html
 
 #-------------------------------------------------------------------------------
 # verificando o pacote:
 
 devtools::check()
 devtools::check_win_devel()
-1
+
 devtools::check_win_release()
 devtools::test()
 

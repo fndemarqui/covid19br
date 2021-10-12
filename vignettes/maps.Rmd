@@ -90,7 +90,7 @@ mymap
 ```
 
 
-Depending on the computer in use, the R session might crash if the geometry is added to the whole downloaded data set (this is particularly true for the data set at the city level) due to the lack of RAM. Therefore, we advise the users to filter the data by a desirable date before the addition of the geometry.
+Depending on the computer in use, the R session might crash if the geometry is added to the whole downloaded dataset (this is particularly true for the dataset at the city level) due to the lack of RAM. Therefore, we advise the users to filter the data by a desirable date before the addition of the geometry.
 
 For the next example we will draw a bubble map with the 27 capitals of brazilian states.
 

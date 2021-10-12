@@ -11,6 +11,8 @@ A data frame with 5 rows and 4 variables:
   \item pop: estimated population in 2019.
   \item region_code: numerical code attributed to regions
   \item geometry: georeferenced data needed to plot maps.
+  \item area: area (in Km^2) of the brazilian regions.
+  \item demoDens: demographic density of the brazilian regions.
 }
 }
 \source{

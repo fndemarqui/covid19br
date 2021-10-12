@@ -17,6 +17,8 @@ A data frame with 5570 rows and 10 variables:
   \item microregion_code: numerical code attributed to microregions
   \item city_code: numerical code attributed to cities
   \item geometry: georeferenced data needed to plot maps.
+  \item area: area (in Km^2) of the brazilian cities
+  \item demoDens: demographic density of the brazilian cities.
 }
 }
 \source{

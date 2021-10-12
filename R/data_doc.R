@@ -18,6 +18,8 @@
 #'   \item microregion_code: numerical code attributed to microregions
 #'   \item city_code: numerical code attributed to cities
 #'   \item geometry: georeferenced data needed to plot maps.
+#'   \item area: area (in Km^2) of the brazilian cities
+#'   \item demoDens: demographic density of the brazilian cities.
 #' }
 #' @source Instituto Brasileiro de Geografia e Estatística (IBGE):
 #'   \itemize{
@@ -43,6 +45,8 @@ NULL
 #'   \item region_code: numerical code attributed to regions
 #'   \item state_code: numerical code attributed to states
 #'   \item geometry: georeferenced data needed to plot maps.
+#'   \item area: area (in Km^2) of the brazilian states.
+#'   \item demoDens: demographic density of the brazilian states.
 #' }
 #' @source Instituto Brasileiro de Geografia e Estatística (IBGE):
 #'   \itemize{
@@ -65,6 +69,8 @@ NULL
 #'   \item pop: estimated population in 2019.
 #'   \item region_code: numerical code attributed to regions
 #'   \item geometry: georeferenced data needed to plot maps.
+#'   \item area: area (in Km^2) of the brazilian regions.
+#'   \item demoDens: demographic density of the brazilian regions.
 #' }
 #' @source Instituto Brasileiro de Geografia e Estatística (IBGE):
 #'   \itemize{
@@ -100,24 +106,125 @@ NULL
 NULL
 
 
-#' Results of the 2018 presidential election in Brazil
-#' @name election2018
+#' Results of the 2018 presidential election in Brazil by city.
+#' @name election2018Cities
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
 #' @description Data set containing the results of the 2018 presidential election in Brazil.
 #' @format A data frame with 5570 rows and 6 variables:
 #' \itemize{
+#'   \item region: regions' names
+#'   \item state: states' names.
+#'   \item city: cities' names.
+#'   \item region_code: numerical code attributed to regions
+#'   \item state_code: numerical code attributed to states
+#'   \item mesoregion_code: numerical code attributed to mesoregions
+#'   \item microregion_code: numerical code attributed to microregions
+#'   \item city_code: numerical code attributed to cities
 #'   \item Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
 #'   \item Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
 #'   \item pop: estimated population in 2019.
-#'   \item state: states' names.
-#'   \item city: cities' names.
-#'   \item city_code: numerical code attributed to cities
 #' }
-#' @source Tribunal Superior Eleitoral (TSE)
-#'   \itemize{
-#'     \item url: \url{https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1}
+#' @source Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
 #'
-#'   }
+NULL
+
+
+#' Results of the 2018 presidential election in Brazil by state.
+#' @name election2018States
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @format A data frame with 27 rows and 5 variables:
+#' \itemize{
+#'   \item region: regions' names.
+#'   \item state: states' names.
+#'   \item Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+#'   \item Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+#'   \item pop: estimated population in 2019.
+#' }
+#' @source Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
+#'
+NULL
+
+#' Results of the 2018 presidential election in Brazil by region.
+#' @name election2018Regions
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @format A data frame with 5 rows and 4 variables:
+#' \itemize{
+#'   \item region: regions' names.
+#'   \item Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+#'   \item Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+#'   \item pop: estimated population in 2019.
+#' }
+#' @source Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
+#'
+NULL
+
+
+#' Development human indexes by brazilian regions
+#' @name ipeaRegions
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @format A data frame with 5 rows and 6 variables:
+#' \itemize{
+#'   \item region: regions' names.
+#'   \item DHI: development human index.
+#'   \item EDHI: educational development human index.
+#'   \item LDHI: longevity development human index.
+#'   \item IDHI: income development human index.
+#'   \item pop: estimated population in 2019.
+#' }
+#' @source Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+#'
+NULL
+
+
+#' Development human indexes by brazilian states
+#' @name ipeaStates
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @format A data frame with 27 rows and 6 variables:
+#' \itemize{
+#'   \item region: regions' names.
+#'   \item state: states' names.
+#'   \item DHI: development human index.
+#'   \item EDHI: educational development human index.
+#'   \item LDHI: longevity development human index.
+#'   \item IDHI: income development human index.
+#'   \item pop: estimated population in 2019.
+#' }
+#' @source Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+#'
+NULL
+
+#' Development human indexes by brazilian cities
+#' @name ipeaCities
+#' @docType data
+#' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+#' @keywords datasets
+#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @format A data frame with 5570 rows and 9 variables:
+#' \itemize{
+#'   \item region: regions' names.
+#'   \item state: states' names.
+#'   \item city: states' names.
+#'   \item city_code: numerical code attributed to cities
+#'   \item DHI: development human index.
+#'   \item EDHI: educational development human index.
+#'   \item LDHI: longevity development human index.
+#'   \item IDHI: income development human index.
+#'   \item pop: estimated population in 2019.
+#' }
+#' @source Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+#'
 NULL

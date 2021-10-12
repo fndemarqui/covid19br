@@ -146,12 +146,8 @@
   <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
-<<<<<<< HEAD
 <p>The datasets <code>ipeaCities</code>, <code>ipeaStates</code> and <code>ipeaRegions</code> provide the Development Human Indexes (DHI) at city, state and region levels. The next example shows how to combine the COVID-19 data with the election and the DHI datasets.</p>
 <!-- Putting all together:  -->
-=======
-<p>Putting all together:</p>
->>>>>>> 249805b889ff8352971cdb8e1e4564d7d1df7704
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -191,8 +187,9 @@
 <span class="co">#&gt; $ area         [km^2] 1611899.2 [km^2], 3870624.8 [km^2], 1560644.5 [km^2], 56…</span>
 <span class="co">#&gt; $ demoDens     [1/km^2] 10.110480 [1/km^2], 4.761758 [1/km^2], 36.569286 [1/km^2]…</span>
 <span class="co">#&gt; $ geometry     &lt;GEOMETRY [°]&gt; POLYGON ((-54.08399 -23.864..., POLYGON ((-68.38821 -11.0…</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># https://ourworldindata.org/covid-vaccinations</span></code></pre></div>
+<!-- ```{r} -->
+<!-- # https://ourworldindata.org/covid-vaccinations -->
+<!-- ``` -->
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

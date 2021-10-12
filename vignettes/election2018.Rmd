@@ -72,7 +72,7 @@ glimpse(regions)
 ```
 
 
-```{r}
-# https://ourworldindata.org/covid-vaccinations
-```
+<!-- ```{r} -->
+<!-- # https://ourworldindata.org/covid-vaccinations -->
+<!-- ``` -->
 

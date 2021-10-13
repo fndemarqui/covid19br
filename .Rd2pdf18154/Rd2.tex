@@ -1,0 +1,529 @@
+\documentclass[letterpaper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8]{inputenc} % @SET ENCODING@
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `covid19br'}}
+\par\bigskip{\large \today}
+\end{center}
+\inputencoding{utf8}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdftitle = {covid19br: Brazilian COVID-19 Pandemic Data}}}{}\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdfauthor = {Fabio Demarqui; Cristiano Santos}}}{}\begin{description}
+\raggedright{}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{Brazilian COVID-19 Pandemic Data}
+\item[Version]\AsIs{0.1.3}
+\item[Description]\AsIs{Set of functions to import COVID-19 pandemic data into R. The Brazilian COVID-19 data, obtained from the official Brazilian repository at <}\url{https://covid.saude.gov.br/}\AsIs{>, is available at country, region, state, and city-levels. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository.}
+\item[URL]\AsIs{}\url{https://fndemarqui.github.io/covid19br/}\AsIs{}
+\item[BugReports]\AsIs{}\url{https://github.com/fndemarqui/covid19br/issues}\AsIs{}
+\item[Encoding]\AsIs{UTF-8}
+\item[License]\AsIs{AGPL (>= 3)}
+\item[Depends]\AsIs{R (>= 3.5.0)}
+\item[Imports]\AsIs{data.table,
+dplyr,
+rio,
+rlang,
+sf,
+tidyr}
+\item[Suggests]\AsIs{ggrepel,
+kableExtra,
+knitr,
+leaflet,
+pracma,
+plotly,
+rmarkdown,
+testthat,
+tidyverse}
+\item[LazyData]\AsIs{true}
+\item[RoxygenNote]\AsIs{7.1.2}
+\item[VignetteBuilder]\AsIs{knitr}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{add\_epi\_rates}{Adding incidence, mortality and lethality rates to the downloaded data}{add.Rul.epi.Rul.rates}
+%
+\begin{Description}\relax
+This function adds the incidence, mortality and lethality rates to a given data set downloaded by the covid19br::downloadCovid19() function.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+add_epi_rates(data, ...)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{data}] a data set downloaded using the covid19br::downloadCovid19() function.
+
+\item[\code{...}] further arguments passed to other methods.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Details}\relax
+The function add\_epi\_rates() was designed to work with the original names of the variables accumDeaths, accummCases and pop available in the data set downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any change in such variable names.
+\end{Details}
+%
+\begin{Value}
+the data set with the added incidence, mortality and lethality rates.
+\end{Value}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+library(covid19br)
+
+brazil <- downloadCovid19(level = "brazil")
+brazil <- add_epi_rates(brazil)
+
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{add\_geo}{Adding the geometry to the downloaded data for drawing maps}{add.Rul.geo}
+%
+\begin{Description}\relax
+This function adds the necessary geometry for drawing maps to a given data set downloaded by the covid19br::downloadCovid19() function.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+add_geo(data, ...)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{data}] a data set downloaded using the covid19br::downloadCovid19() function.
+
+\item[\code{...}] further arguments passed to other methods.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Details}\relax
+The function add\_geo() was designed to work with the original names of the variables available in the data set downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any change in such variable names.
+\end{Details}
+%
+\begin{Value}
+the data set with the added georeferenced data.
+\end{Value}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+library(covid19br)
+
+regions <- downloadCovid19(level = "regions")
+regions_geo <- add_geo(regions)
+
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{covid19br}{Brazilian COVID-19 Pandemic Data.}{covid19br}
+%
+\begin{Description}\relax
+The package provides a function to automatically import  Brazilian CODID-19 pandemic data into R. Brazilian data is available on the country, region, state, and city levels, and are obtained from the official Brazilian repository at <https://covid.saude.gov.br/>. The package also downloads the world-level COVID-19 data from the John Hopkins University's repository at <https://github.com/CSSEGISandData/COVID-19>.
+\end{Description}
+%
+\begin{Author}\relax
+Fábio N. Demarqui, Cristiano C. Santos, and Matheus B. Costa.
+\end{Author}
+\inputencoding{utf8}
+\HeaderA{downloadCovid19}{Function to download COVID-19 data from web repositories}{downloadCovid19}
+\aliasA{downloadCovid}{downloadCovid19}{downloadCovid}
+%
+\begin{Description}\relax
+This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+downloadCovid19(level = c("brazil", "regions", "states", "cities", "world"))
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{level}] the desired level of data aggregation:  "brazil" (default), "regions", "states", "cities", and "world".
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Details}\relax
+The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in multiple xlsx files. Those files contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (currently over 4G), the data is daily downloaded and then made available in smaller/lighter binary files on the GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
+\end{Details}
+%
+\begin{Value}
+a tibble containing the downloaded data at the specified level.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+library(covid19br)
+
+# Downloading Brazilian COVID-19 data:
+brazil <- downloadCovid19(level = "brazil")
+regions <- downloadCovid19(level = "regions")
+states <- downloadCovid19(level = "states")
+cities <- downloadCovid19(level = "cities")
+
+# Downloading world COVID-19 data:
+world <- downloadCovid19(level = "world")
+
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{election2018Cities}{Results of the 2018 presidential election in Brazil by city.}{election2018Cities}
+\keyword{datasets}{election2018Cities}
+%
+\begin{Description}\relax
+Data set containing the results of the 2018 presidential election in Brazil.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5570 rows and 6 variables:
+\begin{itemize}
+
+\item{} region: regions' names
+\item{} state: states' names.
+\item{} city: cities' names.
+\item{} region\_code: numerical code attributed to regions
+\item{} state\_code: numerical code attributed to states
+\item{} mesoregion\_code: numerical code attributed to mesoregions
+\item{} microregion\_code: numerical code attributed to microregions
+\item{} city\_code: numerical code attributed to cities
+\item{} Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+\item{} Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{election2018Regions}{Results of the 2018 presidential election in Brazil by region.}{election2018Regions}
+\keyword{datasets}{election2018Regions}
+%
+\begin{Description}\relax
+Data set containing the results of the 2018 presidential election in Brazil.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5 rows and 4 variables:
+\begin{itemize}
+
+\item{} region: regions' names.
+\item{} Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+\item{} Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{election2018States}{Results of the 2018 presidential election in Brazil by state.}{election2018States}
+\keyword{datasets}{election2018States}
+%
+\begin{Description}\relax
+Data set containing the results of the 2018 presidential election in Brazil.
+\end{Description}
+%
+\begin{Format}
+A data frame with 27 rows and 5 variables:
+\begin{itemize}
+
+\item{} region: regions' names.
+\item{} state: states' names.
+\item{} Bolsonaro: count of votes obtained by the President-elected Jair Bolosnaro.
+\item{} Haddad: count of votes obtained by the defeated candidate Fernando Haddad.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ibgeCities}{City-level georeferenced data}{ibgeCities}
+\keyword{datasets}{ibgeCities}
+%
+\begin{Description}\relax
+Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on city level.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5570 rows and 10 variables:
+\begin{itemize}
+
+\item{} region: regions' names
+\item{} state: states' names.
+\item{} city: cities' names.
+\item{} pop: estimated population in 2019.
+\item{} region\_code: numerical code attributed to regions
+\item{} state\_code: numerical code attributed to states
+\item{} mesoregion\_code: numerical code attributed to mesoregions
+\item{} microregion\_code: numerical code attributed to microregions
+\item{} city\_code: numerical code attributed to cities
+\item{} geometry: georeferenced data needed to plot maps.
+\item{} area: area (in Km\textasciicircum{}2) of the brazilian cities
+\item{} demoDens: demographic density of the brazilian cities.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto Brasileiro de Geografia e Estatística (IBGE):
+\begin{itemize}
+
+\item{} Shapefiles: \url{https://www.ibge.gov.br/geociencias/downloads-geociencias.html}
+\item{} Population: \url{https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=resultados}
+
+\end{itemize}
+
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ibgeRegions}{Region-level georeferenced data}{ibgeRegions}
+\keyword{datasets}{ibgeRegions}
+%
+\begin{Description}\relax
+Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on region level.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5 rows and 4 variables:
+\begin{itemize}
+
+\item{} region: regions' names
+\item{} pop: estimated population in 2019.
+\item{} region\_code: numerical code attributed to regions
+\item{} geometry: georeferenced data needed to plot maps.
+\item{} area: area (in Km\textasciicircum{}2) of the brazilian regions.
+\item{} demoDens: demographic density of the brazilian regions.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto Brasileiro de Geografia e Estatística (IBGE):
+\begin{itemize}
+
+\item{} Shapefiles: \url{https://www.ibge.gov.br/geociencias/downloads-geociencias.html}
+\item{} Population: \url{https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=resultados}
+
+\end{itemize}
+
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ibgeStates}{State-level georeferenced data}{ibgeStates}
+\keyword{datasets}{ibgeStates}
+%
+\begin{Description}\relax
+Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
+\end{Description}
+%
+\begin{Format}
+A data frame with 27 rows and 6 variables:
+\begin{itemize}
+
+\item{} region: regions' names
+\item{} state: states' names.
+\item{} pop: estimated population in 2019.
+\item{} region\_code: numerical code attributed to regions
+\item{} state\_code: numerical code attributed to states
+\item{} geometry: georeferenced data needed to plot maps.
+\item{} area: area (in Km\textasciicircum{}2) of the brazilian states.
+\item{} demoDens: demographic density of the brazilian states.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto Brasileiro de Geografia e Estatística (IBGE):
+\begin{itemize}
+
+\item{} Shapefiles: \url{https://www.ibge.gov.br/geociencias/downloads-geociencias.html}
+\item{} Population: \url{https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=resultados}
+
+\end{itemize}
+
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ipeaCities}{Brazilian development human indexes by cities}{ipeaCities}
+\keyword{datasets}{ipeaCities}
+%
+\begin{Description}\relax
+Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5570 rows and 9 variables:
+\begin{itemize}
+
+\item{} region: regions' names.
+\item{} state: states' names.
+\item{} city: states' names.
+\item{} city\_code: numerical code attributed to cities
+\item{} DHI: development human index.
+\item{} EDHI: educational development human index.
+\item{} LDHI: longevity development human index.
+\item{} IDHI: income development human index.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ipeaRegions}{Brazilian development human indexes by regions}{ipeaRegions}
+\keyword{datasets}{ipeaRegions}
+%
+\begin{Description}\relax
+Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+\end{Description}
+%
+\begin{Format}
+A data frame with 5 rows and 6 variables:
+\begin{itemize}
+
+\item{} region: regions' names.
+\item{} DHI: development human index.
+\item{} EDHI: educational development human index.
+\item{} LDHI: longevity development human index.
+\item{} IDHI: income development human index.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{ipeaStates}{Brazilian development human indexes by states}{ipeaStates}
+\keyword{datasets}{ipeaStates}
+%
+\begin{Description}\relax
+Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+\end{Description}
+%
+\begin{Format}
+A data frame with 27 rows and 6 variables:
+\begin{itemize}
+
+\item{} region: regions' names.
+\item{} state: states' names.
+\item{} DHI: development human index.
+\item{} EDHI: educational development human index.
+\item{} LDHI: longevity development human index.
+\item{} IDHI: income development human index.
+\item{} pop: estimated population in 2019.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{mundi}{World-level georeferenced data}{mundi}
+\keyword{datasets}{mundi}
+%
+\begin{Description}\relax
+Data set extracted from the R package rnaturalearthdata.
+\end{Description}
+%
+\begin{Format}
+A data frame with 241 rows and 12 variables:
+\begin{itemize}
+
+\item{} country: country's name
+\item{} continent: continent's name
+\item{} region: regions' names
+\item{} subregion: subregion's name
+\item{} pop: estimated population
+\item{} pais: country's name in Portuguese
+\item{} country\_code: numerical code attributed to countries
+\item{} continent\_code: numerical code attributed to continents
+\item{} region\_code: numerical code attributed to regions
+\item{} subregion\_code: numerical code attributed to subregions
+\item{} geometry: georeferenced data needed to plot maps.
+
+\end{itemize}
+
+\end{Format}
+%
+\begin{Author}\relax
+Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
+\end{Author}
+%
+\begin{Source}\relax
+R package rnaturalearthdata.
+\end{Source}
+\printindex{}
+\end{document}

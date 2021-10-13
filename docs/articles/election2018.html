@@ -98,7 +98,7 @@
 
     
     
-<p>This vignette is aimed to show how the results of the 2018 Brazilian Presidential election can be used along with the data COVID-19 pandemic data.</p>
+<p>This vignette aims to show how the results of the 2018 Brazilian presidential election can be combined with data from the COVID-19 pandemic.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/">covid19br</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
@@ -134,7 +134,7 @@
   <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
-<p>The 2018 brazilian presidential election result associates with the Minas Gerais (MG) state can be easily extracted from the data set <code>election2018Cities</code> as illustrated below:</p>
+<p>The 2018 brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set <code>election2018Cities</code> as illustrated below:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># extracting the data:</span>
@@ -146,7 +146,7 @@
   <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
-<p>The datasets <code>ipeaCities</code>, <code>ipeaStates</code> and <code>ipeaRegions</code> provide the Development Human Indexes (DHI) at city, state and region levels. The next example shows how to combine the COVID-19 data with the election and the DHI datasets.</p>
+<p>The package <strong>covid19br</strong> also provides datasets containing Development Human Indexes (DHI) at city (<code>ipeaCities</code>), state (<code>ipeaStates</code>) and region (<code>ipeaRegions</code>) levels. The code presented below shows how to combine the COVID-19 data (at region level) with the election and the DHI datasets.</p>
 <!-- Putting all together:  -->
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -165,18 +165,18 @@
 <span class="co">#&gt; Rows: 5</span>
 <span class="co">#&gt; Columns: 23</span>
 <span class="co">#&gt; $ region       &lt;chr&gt; "Midwest", "North", "Northeast", "South", "Southeast"</span>
-<span class="co">#&gt; $ date         &lt;date&gt; 2021-10-11, 2021-10-11, 2021-10-11, 2021-10-11, 2021-10-1…</span>
+<span class="co">#&gt; $ date         &lt;date&gt; 2021-10-12, 2021-10-12, 2021-10-12, 2021-10-12, 2021-10-1…</span>
 <span class="co">#&gt; $ epi_week     &lt;int&gt; 41, 41, 41, 41, 41</span>
-<span class="co">#&gt; $ newCases     &lt;int&gt; 1588, 408, 580, 1824, 2518</span>
-<span class="co">#&gt; $ accumCases   &lt;int&gt; 2299613, 1850737, 4813502, 4178943, 8439943</span>
-<span class="co">#&gt; $ newDeaths    &lt;int&gt; 64, 7, 26, 38, 67</span>
-<span class="co">#&gt; $ accumDeaths  &lt;int&gt; 57619, 46627, 117287, 94023, 285657</span>
+<span class="co">#&gt; $ newCases     &lt;int&gt; 1021, 392, 748, 3124, 2074</span>
+<span class="co">#&gt; $ accumCases   &lt;int&gt; 2300634, 1851129, 4814250, 4182067, 8442017</span>
+<span class="co">#&gt; $ newDeaths    &lt;int&gt; 32, 10, 38, 39, 66</span>
+<span class="co">#&gt; $ accumDeaths  &lt;int&gt; 57651, 46637, 117325, 94062, 285723</span>
 <span class="co">#&gt; $ newRecovered &lt;int&gt; NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ newFollowup  &lt;int&gt; NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ pop          &lt;dbl&gt; 16297074, 18430980, 57071654, 29975984, 88371433</span>
-<span class="co">#&gt; $ incidence    &lt;dbl&gt; 14110.588, 10041.447, 8434.138, 13940.970, 9550.533</span>
+<span class="co">#&gt; $ incidence    &lt;dbl&gt; 14116.853, 10043.573, 8435.449, 13951.392, 9552.880</span>
 <span class="co">#&gt; $ lethality    &lt;dbl&gt; 2.51, 2.52, 2.44, 2.25, 3.38</span>
-<span class="co">#&gt; $ mortality    &lt;dbl&gt; 353.5543, 252.9817, 205.5083, 313.6611, 323.2459</span>
+<span class="co">#&gt; $ mortality    &lt;dbl&gt; 353.7506, 253.0359, 205.5749, 313.7912, 323.3205</span>
 <span class="co">#&gt; $ Bolsonaro    &lt;int&gt; 5163023, 4242504, 8824454, 11084395, 28351800</span>
 <span class="co">#&gt; $ Haddad       &lt;int&gt; 2595426, 3933015, 20289812, 5152685, 15016238</span>
 <span class="co">#&gt; $ DHI          &lt;dbl&gt; 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span>

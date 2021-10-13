@@ -167,7 +167,7 @@ NULL
 NULL
 
 
-#' Development human indexes by brazilian regions
+#' Brazilian development human indexes by regions
 #' @name ipeaRegions
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
@@ -187,7 +187,7 @@ NULL
 NULL
 
 
-#' Development human indexes by brazilian states
+#' Brazilian development human indexes by states
 #' @name ipeaStates
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
@@ -207,7 +207,7 @@ NULL
 #'
 NULL
 
-#' Development human indexes by brazilian cities
+#' Brazilian development human indexes by cities
 #' @name ipeaCities
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

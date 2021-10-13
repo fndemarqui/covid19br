@@ -3,7 +3,7 @@
 \docType{data}
 \name{ipeaCities}
 \alias{ipeaCities}
-\title{Development human indexes by brazilian cities}
+\title{Brazilian development human indexes by cities}
 \format{
 A data frame with 5570 rows and 9 variables:
 \itemize{

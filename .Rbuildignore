@@ -1,14 +1,13 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^cran-comments\.md$
-^CRAN-RELEASE$
 ^\.travis\.yml$
+^cran-comments\.md$
 ^inst/script_development\.R$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^_pkgdown\.yml$
+^docs$
 ^pkgdown$
+^doc$
 ^Meta$
 ^\.github$
-^docs$
-^doc$

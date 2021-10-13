@@ -5,7 +5,7 @@
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on city level.
+#' @description Dataset obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on city level.
 #' @format A data frame with 5570 rows and 10 variables:
 #' \itemize{
 #'   \item region: regions' names
@@ -36,7 +36,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
+#' @description Dataset obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
 #' @format A data frame with 27 rows and 6 variables:
 #' \itemize{
 #'   \item region: regions' names
@@ -62,7 +62,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on region level.
+#' @description Dataset obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on region level.
 #' @format A data frame with 5 rows and 4 variables:
 #' \itemize{
 #'   \item region: regions' names
@@ -86,7 +86,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set extracted from the R package rnaturalearthdata.
+#' @description Dataset extracted from the R package rnaturalearthdata.
 #' @format A data frame with 241 rows and 12 variables:
 #' \itemize{
 #'   \item country: country's name
@@ -111,7 +111,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @description Dataset containing the results of the 2018 presidential election in Brazil.
 #' @format A data frame with 5570 rows and 6 variables:
 #' \itemize{
 #'   \item region: regions' names
@@ -136,7 +136,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @description Dataset containing the results of the 2018 presidential election in Brazil.
 #' @format A data frame with 27 rows and 5 variables:
 #' \itemize{
 #'   \item region: regions' names.
@@ -154,7 +154,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set containing the results of the 2018 presidential election in Brazil.
+#' @description Dataset containing the results of the 2018 presidential election in Brazil.
 #' @format A data frame with 5 rows and 4 variables:
 #' \itemize{
 #'   \item region: regions' names.
@@ -172,7 +172,7 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @description Dataset on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
 #' @format A data frame with 5 rows and 6 variables:
 #' \itemize{
 #'   \item region: regions' names.
@@ -192,15 +192,15 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @description Dataset on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
 #' @format A data frame with 27 rows and 6 variables:
 #' \itemize{
 #'   \item region: regions' names.
 #'   \item state: states' names.
-#'   \item DHI: development human index.
-#'   \item EDHI: educational development human index.
-#'   \item LDHI: longevity development human index.
-#'   \item IDHI: income development human index.
+#'   \item DHI: average development human index.
+#'   \item EDHI: average educational development human index.
+#'   \item LDHI: average longevity development human index.
+#'   \item IDHI: average income development human index.
 #'   \item pop: estimated population in 2019.
 #' }
 #' @source Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
@@ -212,17 +212,17 @@ NULL
 #' @docType data
 #' @author Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}
 #' @keywords datasets
-#' @description Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+#' @description Dataset on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
 #' @format A data frame with 5570 rows and 9 variables:
 #' \itemize{
 #'   \item region: regions' names.
 #'   \item state: states' names.
 #'   \item city: states' names.
 #'   \item city_code: numerical code attributed to cities
-#'   \item DHI: development human index.
-#'   \item EDHI: educational development human index.
-#'   \item LDHI: longevity development human index.
-#'   \item IDHI: income development human index.
+#'   \item DHI: average development human index.
+#'   \item EDHI: average educational development human index.
+#'   \item LDHI: average longevity development human index.
+#'   \item IDHI: average income development human index.
 #'   \item pop: estimated population in 2019.
 #' }
 #' @source Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.

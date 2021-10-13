@@ -79,7 +79,8 @@ mymap <- states_geo %>%
   addPolygons(fillOpacity = 1, 
               weight = 1,
               smoothFactor = 0.2,
-              color = ~ reds(lethality),
+              color = "gray",
+              fillColor = ~ reds(lethality),
               popup = paste0(states_geo$state, ":  ",  states_geo$lethality, 2)
   ) %>%
   addLegend(position = "bottomright", 

@@ -9,10 +9,10 @@ A data frame with 27 rows and 6 variables:
 \itemize{
   \item region: regions' names.
   \item state: states' names.
-  \item DHI: development human index.
-  \item EDHI: educational development human index.
-  \item LDHI: longevity development human index.
-  \item IDHI: income development human index.
+  \item DHI: average development human index.
+  \item EDHI: average educational development human index.
+  \item LDHI: average longevity development human index.
+  \item IDHI: average income development human index.
   \item pop: estimated population in 2019.
 }
 }
@@ -20,7 +20,7 @@ A data frame with 27 rows and 6 variables:
 Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
 }
 \description{
-Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+Dataset on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

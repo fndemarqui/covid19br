@@ -24,7 +24,7 @@ A data frame with 5570 rows and 6 variables:
 Tribunal Superior Eleitoral (TSE). URL:  \url{https://www.tse.jus.br/eleicoes/estatisticas}.
 }
 \description{
-Data set containing the results of the 2018 presidential election in Brazil.
+Dataset containing the results of the 2018 presidential election in Brazil.
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

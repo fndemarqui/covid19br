@@ -25,7 +25,7 @@ Instituto Brasileiro de Geografia e Estatística (IBGE):
   }
 }
 \description{
-Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
+Dataset obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

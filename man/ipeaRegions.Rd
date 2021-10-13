@@ -19,7 +19,7 @@ A data frame with 5 rows and 6 variables:
 Instituto de Pesquisa Econômica Aplicada (IPEA). URL: \url{https://www.ipea.gov.br/ipeageo/bases.html}.
 }
 \description{
-Data set on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
+Dataset on the development humam indexes provided the Instituto de Pesquisa Econômica Aplicada in 2010.
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

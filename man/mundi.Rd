@@ -24,7 +24,7 @@ A data frame with 241 rows and 12 variables:
 R package rnaturalearthdata.
 }
 \description{
-Data set extracted from the R package rnaturalearthdata.
+Dataset extracted from the R package rnaturalearthdata.
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

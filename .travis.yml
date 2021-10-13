@@ -22,3 +22,16 @@ addons:
   apt:
     packages:
       - libxml2-dev
+      - gdal-bin
+      - libgdal-dev
+      - libproj-dev
+      - libprotobuf-dev
+      - protobuf-compiler
+      - libv8-3.14-dev
+      - libjq-dev
+      - libudunits2-dev
+      - libproj-dev
+      - libgeos-dev
+      - libspatialite-dev
+      - libgdal-dev
+      - libjson-c-dev

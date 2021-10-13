@@ -15,3 +15,10 @@
 - Addition of georeferenced data for Brazil (at city, state and region levels) and world (at country level).
 
 - Lubridate package removed from the Imports field in the DESCRIPTION file.
+
+
+# covid19br 0.1.2
+
+- Inclusion of datasets with the results of the 2018 Presidential Election (at city, state and region levels).
+
+- Inclusion of datasets with Brazilian Development Human Indexes (at city, state and region levels).

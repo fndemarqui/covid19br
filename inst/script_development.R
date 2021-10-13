@@ -42,6 +42,13 @@ devtools::build()
 # verificando o pacote:
 
 devtools::check()
+
+rhub::check_for_cran()
+previous_checks <- rhub::list_package_checks(email = "fndemarqui@est.ufmg.br")
+previous_checks
+
+
+
 devtools::check_win_devel()
 
 devtools::check_win_release()

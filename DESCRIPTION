@@ -25,7 +25,6 @@ Depends:
 Imports: 
     data.table,
     dplyr,
-    rio,
     rlang,
     sf,
     tidyr

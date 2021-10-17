@@ -58,6 +58,11 @@ ggplot(mg) +
 
 Next, we will show how to draw interactive maps using the package __leaflet__. As an illustration, we will consider the lethality by states:
 
+```{r, echo=FALSE, include=FALSE}
+rm(list = ls(all=TRUE))
+```
+
+
 ```{r, message=FALSE, fig.dim = c(7, 5)}
 library(leaflet)
 
@@ -91,15 +96,24 @@ mymap
 ```
 
 
+```{r, echo=FALSE, include=FALSE}
+rm(list = ls(all=TRUE))
+```
+
 Depending on the computer in use, the R session might crash if the geometry is added to the whole downloaded dataset (this is particularly true for the dataset at the city level) due to the lack of RAM. Therefore, we advise the users to filter the data by a desirable date before the addition of the geometry.
 
-For the next example we will draw a bubble map with the 27 capitals of brazilian states.
+For the next example we will draw a bubble map with the 27 capitals of Brazilian states.
 
 ```{r, fig.dim = c(7, 5)}
 library(sf)
 library(ggrepel)
 
 # getting the data:
+
+states_geo <- downloadCovid19("states") %>%
+  filter(date == max(date)) %>%
+  add_geo() 
+
 capitals <- downloadCovid19("cities") %>%
   filter(date == max(date), capital == TRUE) %>%
   add_geo() %>%
@@ -112,23 +126,28 @@ glimpse(capitals)
 
 # drawing some maps:
 incidence <- ggplot() +
-  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_sf(data = states_geo, aes(geometry=geometry)) +
   geom_point(data = capitals, aes(x=X, y=Y, size=incidence, alpha=incidence), color = "orange") +
   geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
 incidence
 
 mortality <- ggplot() +
-  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_sf(data = states_geo, aes(geometry=geometry)) +
   geom_point(data = capitals, aes(x=X, y=Y, size=mortality, alpha=mortality), color = "red") +
   geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
 mortality
 
 lethality <- ggplot() +
-  geom_sf(data = ibgeStates, aes(geometry=geometry)) +
+  geom_sf(data = states_geo, aes(geometry=geometry)) +
   geom_point(data = capitals, aes(x=X, y=Y, size=lethality, alpha=lethality), color = "darkred") +
   geom_text_repel( data=capitals, aes(x=X, y=Y, label=city), size=3)
 lethality
 
+```
+
+
+```{r, echo=FALSE, include=FALSE}
+rm(list = ls(all=TRUE))
 ```
 
 Maps involving world data of COVID-19 pandemic can be draw similarly to the previous examples shown in this vignette. Below we present a simple example:

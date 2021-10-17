@@ -55,6 +55,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9SJ6LCDMW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P9SJ6LCDMW');
+</script>
+
 
   </head>
 
@@ -153,12 +163,55 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    
+<ul>
+<li><p>World map: <a href='https://CRAN.R-project.org/package=rnaturalearthdata'>https://CRAN.R-project.org/package=rnaturalearthdata</a></p></li>
+<li><p>Shapefiles for Brazilian maps: <a href='https://www.ibge.gov.br/geociencias/downloads-geociencias.html'>https://www.ibge.gov.br/geociencias/downloads-geociencias.html</a></p></li>
+<li><p>Brazilian DHI data: <a href='https://www.ipea.gov.br/ipeageo/bases.html'>https://www.ipea.gov.br/ipeageo/bases.html</a></p></li>
+</ul>
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>the data set with the added georeferenced data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function add_geo() was designed to work with the original names of the variables available in the data set downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any change in such variable names.</p>
+    <p>The function add_geo() was designed to work with the original names of the variables available in the dataset downloaded by the covid19br::downloadCovid19(). For this reason, this function must be used before any changes in the original names of the variables.</p>
+<p>The development human index (DHI) variables (see full description below) are available at city level, and their average are computed for state and region levels.</p>
+<p>Data dictionary (Brazilian data):</p><ul>
+<li><p>region: regions' names</p></li>
+<li><p>state: states' names.</p></li>
+<li><p>city: cities' names.</p></li>
+<li><p>DHI: development human index.</p></li>
+<li><p>EDHI: educational development human index.</p></li>
+<li><p>LDHI: longevity development human index.</p></li>
+<li><p>IDHI: income development human index.</p></li>
+<li><p>pop: estimated population in 2019.</p></li>
+<li><p>region_code: numerical code attributed to regions</p></li>
+<li><p>state_code: numerical code attributed to states</p></li>
+<li><p>mesoregion_code: numerical code attributed to mesoregions</p></li>
+<li><p>microregion_code: numerical code attributed to microregions</p></li>
+<li><p>city_code: numerical code attributed to cities</p></li>
+<li><p>geometry: georeferenced data needed to plot maps.</p></li>
+<li><p>area: area (in Km^2)</p></li>
+<li><p>demoDens: demographic density.</p></li>
+</ul>
+
+<p>Data dictionary (world data):</p><ul>
+<li><p>country: country's name</p></li>
+<li><p>continent: continent's name</p></li>
+<li><p>region: regions' names</p></li>
+<li><p>subregion: subregion's name</p></li>
+<li><p>pop: estimated population</p></li>
+<li><p>pais: country's name in Portuguese</p></li>
+<li><p>country_code: numerical code attributed to countries</p></li>
+<li><p>continent_code: numerical code attributed to continents</p></li>
+<li><p>region_code: numerical code attributed to regions</p></li>
+<li><p>subregion_code: numerical code attributed to subregions</p></li>
+<li><p>geometry: georeferenced data needed to plot maps.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Fabio N. Demarqui <a href='mailto:fndemarqui@est.ufmg.br'>fndemarqui@est.ufmg.br</a></p>
@@ -166,10 +219,31 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://fndemarqui.github.io/covid19br/'>covid19br</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='va'>regions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='downloadCovid19.html'>downloadCovid19</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='st'>"regions"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span></div><div class='output co'>#&gt; <span class='message'>Please, be patient...</span></div><div class='output co'>#&gt; <span class='message'> Done!</span></div><div class='input'><span class='va'>regions_geo</span> <span class='op'>&lt;-</span> <span class='fu'>add_geo</span><span class='op'>(</span><span class='va'>regions</span><span class='op'>)</span>
-<span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("region", "pop")</span></div><div class='input'><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>regions_geo</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 3,000
+#&gt; Columns: 18
+#&gt; $ region       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Midwest", "Midwest", "Midwest", "Midwest", "Midwest", "M…
+#&gt; $ date         <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2020-02-25, 2020-02-26, 2020-02-27, 2020-02-28, 2020-02-…
+#&gt; $ epi_week     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11…
+#&gt; $ newCases     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4, …
+#&gt; $ accumCases   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 5, 9, …
+#&gt; $ newDeaths    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#&gt; $ accumDeaths  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#&gt; $ newRecovered <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+#&gt; $ newFollowup  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+#&gt; $ pop          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 16297074, 16297074, 16297074, 16297074, 16297074, 1629707…
+#&gt; $ DHI          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.6894678, 0.6894678, 0.6894678, 0.6894678, 0.6894678, 0.…
+#&gt; $ EDHI         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.5841416, 0.5841416, 0.5841416, 0.5841416, 0.5841416, 0.…
+#&gt; $ LDHI         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.8224442, 0.8224442, 0.8224442, 0.8224442, 0.8224442, 0.…
+#&gt; $ IDHI         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.6844893, 0.6844893, 0.6844893, 0.6844893, 0.6844893, 0.…
+#&gt; $ region_code  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, …
+#&gt; $ area         <span style='color: #949494;'>[km^2]</span> 1611899 [km^2], 1611899 [km^2], 1611899 [km^2], 1611899 …
+#&gt; $ demoDens     <span style='color: #949494;'>[1/km^2]</span> 10.11048 [1/km^2], 10.11048 [1/km^2], 10.11048 [1/km^2…
+#&gt; $ geometry     <span style='color: #949494; font-style: italic;'>&lt;POLYGON [°]&gt;</span> POLYGON ((-54.08399 -23.864..., POLYGON ((-54.083…</div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

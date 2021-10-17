@@ -14,10 +14,40 @@ downloadCovid19(level = c("brazil", "regions", "states", "cities", "world"))
 a tibble containing the downloaded data at the specified level.
 }
 \description{
-This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
+This function downloads the pandemic COVID-19 data at Brazil and World levels. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
 }
 \details{
-The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in multiple xlsx files. Those files contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (currently over 4G), the data is daily downloaded and then made available in smaller/lighter binary files on the GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.
+Data dictionary (variables commum to brazilian and world data):
+\itemize{
+  \item date: date of data registry
+  \item epi_week: epidemiological week
+  \item pop: estimated population
+  \item accumCases: accumulative number of confirmed cases
+  \item newCases: daily count of new confirmed cases
+  \item accumDeaths: accumulative number of deaths
+  \item newDeaths: daily count of new deaths
+  \item newRecovered: daily count of new recovered patients
+}
+
+Data dictionary (variables in the brazilian data):
+\itemize{
+  \item region: regions' names
+  \item state: states' names.
+  \item city: cities' names.
+  \item state_code: numerical code attributed to states
+  \item city_code: numerical code attributed to cities
+  \item healthRegion_code: health region code
+  \item healthRegion: heald region name
+  \item newFollowup: daily count of new patients under follow up
+  \item metro_area: indicator variable for city localized in a metropolitan area
+  \item capital: indicator variable for capital of brazilian states
+}
+
+Data dictionary (variables in the world data):
+\itemize{
+  \item country: countries' names
+  \item accumRecovered: accumulative number of recovered patients
+}
 }
 \examples{
 \donttest{

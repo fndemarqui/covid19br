@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 This vignette shows how to use the  R package __covid19br__ for downloading and exploring data from the COVID-19 pandemic in Brazil and the globe as well. The package downloads datasets from the following repositories:
 
-- The official brazilian repository provided by the brazilian government: [https://covid.saude.gov.br](https://covid.saude.gov.br); 
+- The official Brazilian repository provided by the Brazilian government: [https://covid.saude.gov.br](https://covid.saude.gov.br); 
 
 - The Johns Hopkins University's repository: [https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19) 
 
@@ -120,7 +120,7 @@ p <- ggplot(regions, aes(x = date, y = mortality, color = region)) +
 ggplotly(p)
 ```
 
-In our last example, we will obtain a table summarizing the  for the 27 brazilian capitals in `r max(brazil$date)`.
+In our last example, we will obtain a table summarizing the  for the 27 Brazilian capitals in `r max(brazil$date)`.
 
 ```{r, message = FALSE}
 library(kableExtra)
@@ -137,7 +137,7 @@ capitals <- cities %>%
 capitals %>%
  kable(
     full_width = F,
-    caption = "Summary of the COVID-19 pandemic in the 27 capitals of brazilian states."
+    caption = "Summary of the COVID-19 pandemic in the 27 capitals of Brazilian states."
   )
 
 

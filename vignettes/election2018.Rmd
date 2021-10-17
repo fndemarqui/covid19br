@@ -40,7 +40,7 @@ ggplot(election2018Cities) +
 
 ```
 
-The 2018 brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set `election2018Cities` as illustrated below:
+The 2018 Brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set `election2018Cities` as illustrated below:
 
 ```{r, message=FALSE, fig.dim = c(7, 5)}
 
@@ -60,11 +60,15 @@ The package __covid19br__ also provides datasets containing Development Human In
 <!-- Putting all together:  -->
 
 ```{r}
+
+# loading the election data:
+data(election2018Regions)
+
+  # putting all together 
 regions <- downloadCovid19("regions") %>%
   filter(date == max(date)) %>%
   add_epi_rates() %>%
   left_join(election2018Regions) %>%
-  left_join(ipeaRegions) %>% 
   add_geo()
 
 glimpse(regions)

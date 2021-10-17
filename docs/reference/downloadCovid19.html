@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Function to download COVID-19 data from web repositories — downloadCovid19" />
-<meta property="og:description" content="This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level." />
+<meta property="og:description" content="This function downloads the pandemic COVID-19 data at Brazil and World levels. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level." />
 
 
 
@@ -54,6 +54,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9SJ6LCDMW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P9SJ6LCDMW');
+</script>
 
 
   </head>
@@ -135,7 +145,7 @@
     </div>
 
     <div class="ref-description">
-    <p>This function downloads the pandemic COVID-19 data at Brazil and World basis. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.</p>
+    <p>This function downloads the pandemic COVID-19 data at Brazil and World levels. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.</p>
     </div>
 
     <pre class="usage"><span class='fu'>downloadCovid19</span><span class='op'>(</span>level <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"brazil"</span>, <span class='st'>"regions"</span>, <span class='st'>"states"</span>, <span class='st'>"cities"</span>, <span class='st'>"world"</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -154,7 +164,35 @@
     <p>a tibble containing the downloaded data at the specified level.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The Brazilian data provided by the Brazilian government at its official repository (https://covid.saude.gov.br/) is available in multiple xlsx files. Those files contains data aggregated at national, state, and city geographic levels.  Because importing such data file into R requires a considerable amount of RAM (currently over 4G), the data is daily downloaded and then made available in smaller/lighter binary files on the GitHub repository (https://github.com/dest-ufmg/covid19repo) maintained by the authors' package.</p>
+    <p>Data dictionary (variables commum to brazilian and world data):</p><ul>
+<li><p>date: date of data registry</p></li>
+<li><p>epi_week: epidemiological week</p></li>
+<li><p>pop: estimated population</p></li>
+<li><p>accumCases: accumulative number of confirmed cases</p></li>
+<li><p>newCases: daily count of new confirmed cases</p></li>
+<li><p>accumDeaths: accumulative number of deaths</p></li>
+<li><p>newDeaths: daily count of new deaths</p></li>
+<li><p>newRecovered: daily count of new recovered patients</p></li>
+</ul>
+
+<p>Data dictionary (variables in the brazilian data):</p><ul>
+<li><p>region: regions' names</p></li>
+<li><p>state: states' names.</p></li>
+<li><p>city: cities' names.</p></li>
+<li><p>state_code: numerical code attributed to states</p></li>
+<li><p>city_code: numerical code attributed to cities</p></li>
+<li><p>healthRegion_code: health region code</p></li>
+<li><p>healthRegion: heald region name</p></li>
+<li><p>newFollowup: daily count of new patients under follow up</p></li>
+<li><p>metro_area: indicator variable for city localized in a metropolitan area</p></li>
+<li><p>capital: indicator variable for capital of brazilian states</p></li>
+</ul>
+
+<p>Data dictionary (variables in the world data):</p><ul>
+<li><p>country: countries' names</p></li>
+<li><p>accumRecovered: accumulative number of recovered patients</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>

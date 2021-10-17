@@ -1,5 +1,5 @@
 
-
+usethis::use_build_ignore(".Rhistory")
 usethis::use_build_ignore("inst/script_development.R")
 usethis::use_git_ignore("inst/script_development.R")
 # usethis::use_build_ignore("doc")
@@ -50,7 +50,6 @@ previous_checks
 
 
 devtools::check_win_devel()
-
 devtools::check_win_release()
 devtools::test()
 

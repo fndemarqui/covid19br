@@ -17,8 +17,12 @@
 - Lubridate package removed from the Imports field in the DESCRIPTION file.
 
 
-# covid19br 0.1.2
+# covid19br 0.1.3
 
-- Inclusion of datasets with the results of the 2018 Presidential Election (at city, state and region levels).
+- Addition of datasets with 2018 Brazilian presidential election results at city, state and regional levels.
 
-- Inclusion of datasets with Brazilian Development Human Indexes (at city, state and region levels).
+- Georeferenced data was removed from the package and made available on the fly when calling the function add_geo().
+
+- Documentation update
+
+- Update of vignettes

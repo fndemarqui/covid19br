@@ -23,9 +23,11 @@ The function add_epi_rates() was designed to work with the original names of the
 \examples{
 \donttest{
 library(covid19br)
+library(dplyr)
 
 brazil <- downloadCovid19(level = "brazil")
 brazil <- add_epi_rates(brazil)
+glimpse(brazil)
 }
 
 }

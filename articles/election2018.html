@@ -113,7 +113,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
 
 <span class="co"># looking at the data:</span>
-<span class="fu">glimpse</span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 5,570</span>
 <span class="co">#&gt; Columns: 11</span>
 <span class="co">#&gt; $ region           &lt;chr&gt; "North", "North", "North", "North", "North", "North",…</span>
@@ -140,7 +140,7 @@
   <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
-<p>The 2018 brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set <code>election2018Cities</code> as illustrated below:</p>
+<p>The 2018 Brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set <code>election2018Cities</code> as illustrated below:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># extracting the data:</span>
@@ -155,11 +155,15 @@
 <p>The package <strong>covid19br</strong> also provides datasets containing Development Human Indexes (DHI) at city (<code>ipeaCities</code>), state (<code>ipeaStates</code>) and region (<code>ipeaRegions</code>) levels. The code presented below shows how to combine the COVID-19 data (at region level) with the election and the DHI datasets.</p>
 <!-- Putting all together:  -->
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R">
+<span class="co"># loading the election data:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span>
+
+  <span class="co"># putting all together </span>
+<span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_epi_rates.html">add_epi_rates</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">left_join</span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">left_join</span><span class="op">(</span><span class="va">ipeaRegions</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/add_geo.html">add_geo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="co">#&gt; Please, be patient...</span>
@@ -167,22 +171,22 @@
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 
-<span class="fu">glimpse</span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 5</span>
 <span class="co">#&gt; Columns: 23</span>
 <span class="co">#&gt; $ region       &lt;chr&gt; "Midwest", "North", "Northeast", "South", "Southeast"</span>
-<span class="co">#&gt; $ date         &lt;date&gt; 2021-10-14, 2021-10-14, 2021-10-14, 2021-10-14, 2021-10-1…</span>
+<span class="co">#&gt; $ date         &lt;date&gt; 2021-10-16, 2021-10-16, 2021-10-16, 2021-10-16, 2021-10-1…</span>
 <span class="co">#&gt; $ epi_week     &lt;int&gt; 41, 41, 41, 41, 41</span>
-<span class="co">#&gt; $ newCases     &lt;int&gt; 2431, 847, 1858, 2829, 6323</span>
-<span class="co">#&gt; $ accumCases   &lt;int&gt; 2305885, 1852413, 4817004, 4186762, 8450173</span>
-<span class="co">#&gt; $ newDeaths    &lt;int&gt; 61, 11, 53, 125, 275</span>
-<span class="co">#&gt; $ accumDeaths  &lt;int&gt; 57759, 46653, 117401, 94229, 286057</span>
+<span class="co">#&gt; $ newCases     &lt;int&gt; 1534, 766, 1846, 2934, 4170</span>
+<span class="co">#&gt; $ accumCases   &lt;int&gt; 2310360, 1854070, 4821086, 4192933, 8460277</span>
+<span class="co">#&gt; $ newDeaths    &lt;int&gt; 36, 11, 62, 85, 289</span>
+<span class="co">#&gt; $ accumDeaths  &lt;int&gt; 57886, 46690, 117511, 94458, 286607</span>
 <span class="co">#&gt; $ newRecovered &lt;int&gt; NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ newFollowup  &lt;int&gt; NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ pop          &lt;dbl&gt; 16297074, 18430980, 57071654, 29975984, 88371433</span>
-<span class="co">#&gt; $ incidence    &lt;dbl&gt; 14149.074, 10050.540, 8440.274, 13967.054, 9562.109</span>
-<span class="co">#&gt; $ lethality    &lt;dbl&gt; 2.50, 2.52, 2.44, 2.25, 3.39</span>
-<span class="co">#&gt; $ mortality    &lt;dbl&gt; 354.4133, 253.1227, 205.7081, 314.3483, 323.6985</span>
+<span class="co">#&gt; $ incidence    &lt;dbl&gt; 14176.533, 10059.530, 8447.426, 13987.641, 9573.543</span>
+<span class="co">#&gt; $ lethality    &lt;dbl&gt; 2.51, 2.52, 2.44, 2.25, 3.39</span>
+<span class="co">#&gt; $ mortality    &lt;dbl&gt; 355.1926, 253.3235, 205.9008, 315.1123, 324.3209</span>
 <span class="co">#&gt; $ Bolsonaro    &lt;int&gt; 5163023, 4242504, 8824454, 11084395, 28351800</span>
 <span class="co">#&gt; $ Haddad       &lt;int&gt; 2595426, 3933015, 20289812, 5152685, 15016238</span>
 <span class="co">#&gt; $ DHI          &lt;dbl&gt; 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span>

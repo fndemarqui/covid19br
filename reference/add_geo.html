@@ -224,7 +224,7 @@
 <span class='va'>regions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='downloadCovid19.html'>downloadCovid19</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='st'>"regions"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span></div><div class='output co'>#&gt; <span class='message'>Please, be patient...</span></div><div class='output co'>#&gt; <span class='message'> Done!</span></div><div class='input'><span class='va'>regions_geo</span> <span class='op'>&lt;-</span> <span class='fu'>add_geo</span><span class='op'>(</span><span class='va'>regions</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("region", "pop")</span></div><div class='input'><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>regions_geo</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Rows: 3,000
+</div><div class='output co'>#&gt; Rows: 3,005
 #&gt; Columns: 18
 #&gt; $ region       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Midwest", "Midwest", "Midwest", "Midwest", "Midwest", "M…
 #&gt; $ date         <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2020-02-25, 2020-02-26, 2020-02-27, 2020-02-28, 2020-02-…

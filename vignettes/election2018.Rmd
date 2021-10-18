@@ -1,6 +1,7 @@
 ---
 title: "Results of the 2018 Brazilian Presidential election"
 output: rmarkdown::html_vignette
+author: Fábio N. Demarqui
 vignette: >
   %\VignetteIndexEntry{Results of the 2018 Brazilian Presidential election}
   %\VignetteEngine{knitr::rmarkdown}

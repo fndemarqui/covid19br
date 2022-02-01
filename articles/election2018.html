@@ -25,6 +25,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,18 +39,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">covid19br</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/covid19br.html">Get started</a>
 </li>
@@ -76,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/fndemarqui/covid19br/">
+  <a href="https://github.com/fndemarqui/covid19br/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -95,10 +91,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Results of the 2018 Brazilian Presidential election</h1>
-                        <h4 class="author">Fábio N. Demarqui</h4>
+                        <h4 data-toc-skip class="author">Fábio N. Demarqui</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/fndemarqui/covid19br/blob/master/vignettes/election2018.Rmd"><code>vignettes/election2018.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/fndemarqui/covid19br/blob/HEAD/vignettes/election2018.Rmd" class="external-link"><code>vignettes/election2018.Rmd</code></a></small>
       <div class="hidden name"><code>election2018.Rmd</code></div>
 
     </div>
@@ -107,64 +103,64 @@
     
 <p>This vignette aims to show how the results of the 2018 Brazilian presidential election can be combined with data from the COVID-19 pandemic.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/">covid19br</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 
 <span class="co"># loading the election data:</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
 
 <span class="co"># looking at the data:</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 5,570</span>
 <span class="co">#&gt; Columns: 11</span>
-<span class="co">#&gt; $ region           &lt;chr&gt; "North", "North", "North", "North", "North", "North",…</span>
-<span class="co">#&gt; $ state            &lt;chr&gt; "AC", "AC", "AC", "AC", "AC", "AC", "AC", "AC", "AC",…</span>
-<span class="co">#&gt; $ city             &lt;chr&gt; "Acrelândia", "Assis Brasil", "Brasiléia", "Bujari", …</span>
-<span class="co">#&gt; $ region_code      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span>
-<span class="co">#&gt; $ state_code       &lt;dbl&gt; 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 1…</span>
-<span class="co">#&gt; $ mesoregion_code  &lt;int&gt; 1202, 1202, 1202, 1202, 1202, 1201, 1202, 1201, 1201,…</span>
-<span class="co">#&gt; $ microregion_code &lt;int&gt; 12004, 12005, 12005, 12004, 12004, 12001, 12005, 1200…</span>
-<span class="co">#&gt; $ city_code        &lt;int&gt; 120001, 120005, 120010, 120013, 120017, 120020, 12002…</span>
-<span class="co">#&gt; $ Bolsonaro        &lt;int&gt; 5165, 2333, 8711, 4676, 3895, 31147, 6284, 6296, 1375…</span>
-<span class="co">#&gt; $ Haddad           &lt;int&gt; 1300, 1660, 3208, 1274, 1086, 7818, 2026, 5256, 1415,…</span>
-<span class="co">#&gt; $ pop              &lt;dbl&gt; 15256, 7417, 26278, 10266, 11733, 88376, 18411, 34780…</span>
+<span class="co">#&gt; $ region           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "North", "North", "North", "North", "North", "North",…</span>
+<span class="co">#&gt; $ state            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "AC", "AC", "AC", "AC", "AC", "AC", "AC", "AC", "AC",…</span>
+<span class="co">#&gt; $ city             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Acrelândia", "Assis Brasil", "Brasiléia", "Bujari", …</span>
+<span class="co">#&gt; $ region_code      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span>
+<span class="co">#&gt; $ state_code       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 1…</span>
+<span class="co">#&gt; $ mesoregion_code  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1202, 1202, 1202, 1202, 1202, 1201, 1202, 1201, 1201,…</span>
+<span class="co">#&gt; $ microregion_code <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 12004, 12005, 12005, 12004, 12004, 12001, 12005, 1200…</span>
+<span class="co">#&gt; $ city_code        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 120001, 120005, 120010, 120013, 120017, 120020, 12002…</span>
+<span class="co">#&gt; $ Bolsonaro        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5165, 2333, 8711, 4676, 3895, 31147, 6284, 6296, 1375…</span>
+<span class="co">#&gt; $ Haddad           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1300, 1660, 3208, 1274, 1086, 7818, 2026, 5256, 1415,…</span>
+<span class="co">#&gt; $ pop              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15256, 7417, 26278, 10266, 11733, 88376, 18411, 34780…</span>
 
-<span class="va">election2018Cities</span> <span class="op">&lt;-</span> <span class="va">election2018Cities</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_geo.html">add_geo</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+<span class="va">election2018Cities</span> <span class="op">&lt;-</span> <span class="va">election2018Cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/add_geo.html">add_geo</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
     prop <span class="op">=</span> <span class="fl">100</span><span class="op">*</span><span class="va">Bolsonaro</span><span class="op">/</span><span class="op">(</span><span class="va">Bolsonaro</span> <span class="op">+</span> <span class="va">Haddad</span><span class="op">)</span>,
-  <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Bolsonaro"</span>, <span class="st">"Haddad"</span><span class="op">)</span>, values_to <span class="op">=</span> <span class="st">"votes"</span>, names_to <span class="op">=</span> <span class="st">"candidate"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Bolsonaro"</span>, <span class="st">"Haddad"</span><span class="op">)</span>, values_to <span class="op">=</span> <span class="st">"votes"</span>, names_to <span class="op">=</span> <span class="st">"candidate"</span><span class="op">)</span>
 
 
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">election2018Cities</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 <p>The 2018 Brazilian presidential election results observed in Minas Gerais (MG) state, for instance, can be easily extracted from the data set <code>election2018Cities</code> as illustrated below:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># extracting the data:</span>
-<span class="va">mg_election</span> <span class="op">&lt;-</span> <span class="va">election2018Cities</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="st">"MG"</span><span class="op">)</span>
+<span class="va">mg_election</span> <span class="op">&lt;-</span> <span class="va">election2018Cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="st">"MG"</span><span class="op">)</span>
 
 <span class="co"># visualizing:</span>
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">mg_election</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mg_election</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"% votes"</span><span class="op">)</span></code></pre></div>
 <p><img src="election2018_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 <p>The package <strong>covid19br</strong> also provides datasets containing Development Human Indexes (DHI) at city (<code>ipeaCities</code>), state (<code>ipeaStates</code>) and region (<code>ipeaRegions</code>) levels. The code presented below shows how to combine the COVID-19 data (at region level) with the election and the DHI datasets.</p>
 <!-- Putting all together:  -->
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># loading the election data:</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span>
 
   <span class="co"># putting all together </span>
-<span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/add_epi_rates.html">add_epi_rates</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/add_epi_rates.html">add_epi_rates</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">election2018Regions</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/add_geo.html">add_geo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="co">#&gt; Please, be patient...</span>
@@ -172,32 +168,32 @@
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">regions</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 5</span>
 <span class="co">#&gt; Columns: 23</span>
-<span class="co">#&gt; $ region       &lt;chr&gt; "Midwest", "North", "Northeast", "South", "Southeast"</span>
-<span class="co">#&gt; $ date         &lt;date&gt; 2021-10-17, 2021-10-17, 2021-10-17, 2021-10-17, 2021-10-1…</span>
-<span class="co">#&gt; $ epi_week     &lt;int&gt; 42, 42, 42, 42, 42</span>
-<span class="co">#&gt; $ newCases     &lt;int&gt; 620, 77, 1161, 1432, 2448</span>
-<span class="co">#&gt; $ accumCases   &lt;int&gt; 2310980, 1854147, 4822247, 4194365, 8462725</span>
-<span class="co">#&gt; $ newDeaths    &lt;int&gt; 14, 5, 19, 27, 65</span>
-<span class="co">#&gt; $ accumDeaths  &lt;int&gt; 57900, 46695, 117530, 94485, 286672</span>
-<span class="co">#&gt; $ newRecovered &lt;int&gt; NA, NA, NA, NA, NA</span>
-<span class="co">#&gt; $ newFollowup  &lt;int&gt; NA, NA, NA, NA, NA</span>
-<span class="co">#&gt; $ pop          &lt;dbl&gt; 16297074, 18430980, 57071654, 29975984, 88371433</span>
-<span class="co">#&gt; $ incidence    &lt;dbl&gt; 14180.337, 10059.948, 8449.461, 13992.418, 9576.313</span>
-<span class="co">#&gt; $ lethality    &lt;dbl&gt; 2.51, 2.52, 2.44, 2.25, 3.39</span>
-<span class="co">#&gt; $ mortality    &lt;dbl&gt; 355.2785, 253.3506, 205.9341, 315.2023, 324.3944</span>
-<span class="co">#&gt; $ Bolsonaro    &lt;int&gt; 5163023, 4242504, 8824454, 11084395, 28351800</span>
-<span class="co">#&gt; $ Haddad       &lt;int&gt; 2595426, 3933015, 20289812, 5152685, 15016238</span>
-<span class="co">#&gt; $ DHI          &lt;dbl&gt; 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span>
-<span class="co">#&gt; $ EDHI         &lt;dbl&gt; 0.5841416, 0.4904276, 0.4884060, 0.6130152, 0.6081894</span>
-<span class="co">#&gt; $ LDHI         &lt;dbl&gt; 0.8224442, 0.7803808, 0.7543157, 0.8353316, 0.8281859</span>
-<span class="co">#&gt; $ IDHI         &lt;dbl&gt; 0.6844893, 0.5928241, 0.5622705, 0.7134444, 0.6811571</span>
-<span class="co">#&gt; $ region_code  &lt;dbl&gt; 5, 1, 2, 4, 3</span>
-<span class="co">#&gt; $ area         [km^2] 1611899.2 [km^2], 3870624.8 [km^2], 1560644.5 [km^2], 56…</span>
-<span class="co">#&gt; $ demoDens     [1/km^2] 10.110480 [1/km^2], 4.761758 [1/km^2], 36.569286 [1/km^2]…</span>
-<span class="co">#&gt; $ geometry     &lt;GEOMETRY [°]&gt; POLYGON ((-54.08399 -23.864..., POLYGON ((-68.38821 -11.0…</span></code></pre></div>
+<span class="co">#&gt; $ region       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Midwest", "North", "Northeast", "South", "Southeast"</span>
+<span class="co">#&gt; $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2022-01-31, 2022-01-31, 2022-01-31, 2022-01-31, 2022-01-3…</span>
+<span class="co">#&gt; $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 5, 5, 5</span>
+<span class="co">#&gt; $ newCases     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 23557, 9872, 15099, 7634, 21785</span>
+<span class="co">#&gt; $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2692052, 2161240, 5392581, 5220867, 9960004</span>
+<span class="co">#&gt; $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 100, 26, 86, 39, 33</span>
+<span class="co">#&gt; $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 60133, 48144, 121657, 98643, 298561</span>
+<span class="co">#&gt; $ newRecovered <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span>
+<span class="co">#&gt; $ newFollowup  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span>
+<span class="co">#&gt; $ pop          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 16297074, 18430980, 57071654, 29975984, 88371433</span>
+<span class="co">#&gt; $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 16518.62, 11726.13, 9448.79, 17416.83, 11270.62</span>
+<span class="co">#&gt; $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.23, 2.23, 2.26, 1.89, 3.00</span>
+<span class="co">#&gt; $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 368.9803, 261.2124, 213.1654, 329.0734, 337.8479</span>
+<span class="co">#&gt; $ Bolsonaro    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5163023, 4242504, 8824454, 11084395, 28351800</span>
+<span class="co">#&gt; $ Haddad       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2595426, 3933015, 20289812, 5152685, 15016238</span>
+<span class="co">#&gt; $ DHI          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span>
+<span class="co">#&gt; $ EDHI         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5841416, 0.4904276, 0.4884060, 0.6130152, 0.6081894</span>
+<span class="co">#&gt; $ LDHI         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.8224442, 0.7803808, 0.7543157, 0.8353316, 0.8281859</span>
+<span class="co">#&gt; $ IDHI         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6844893, 0.5928241, 0.5622705, 0.7134444, 0.6811571</span>
+<span class="co">#&gt; $ region_code  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5, 1, 2, 4, 3</span>
+<span class="co">#&gt; $ area         <span style="color: #949494;">[km^2]</span> 1611899.2 [km^2], 3870624.8 [km^2], 1560644.5 [km^2], 56…</span>
+<span class="co">#&gt; $ demoDens     <span style="color: #949494;">[1/km^2]</span> 10.110480 [1/km^2], 4.761758 [1/km^2], 36.569286 [1/km^2]…</span>
+<span class="co">#&gt; $ geometry     <span style="color: #949494; font-style: italic;">&lt;GEOMETRY [°]&gt;</span> POLYGON ((-54.08399 -23.864..., POLYGON ((-68.38821 -11.0…</span></code></pre></div>
 <!-- ```{r} -->
 <!-- # https://ourworldindata.org/covid-vaccinations -->
 <!-- ``` -->
@@ -212,11 +208,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Fabio Demarqui, Cristiano Santos.</p>
+  <p></p>
+<p>Developed by Fabio Demarqui, Cristiano Santos.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -224,6 +222,8 @@
 
   
 
+
+  
 
   </body>
 </html>

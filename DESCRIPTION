@@ -1,7 +1,7 @@
 Package: covid19br
 Type: Package
 Title: Brazilian COVID-19 Pandemic Data
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: 
     c(person(given = "Fabio", 
       family = "Demarqui", 

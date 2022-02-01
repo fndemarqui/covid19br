@@ -26,3 +26,8 @@
 - Documentation update
 
 - Update of vignettes
+
+
+# covid19br 0.1.4
+
+- Changing class of downloaded data to data.frame for compability with package dplyr. 

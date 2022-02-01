@@ -1,5 +1,5 @@
 
-Submission of a new version (0.1.2 to 0.1.3) of the package.
+Submission of a new version (0.1.3 to 0.1.4) of the package.
 
 ## Test environments
 * local ubuntu 21.04, R 4.1.0

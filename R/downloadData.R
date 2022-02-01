@@ -114,6 +114,7 @@ downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "
     message(" Done!")
   }
   mydata <- setattr(mydata, "level", level)
+  class(data) <- "data.frame"
   return(mydata)
 }
 

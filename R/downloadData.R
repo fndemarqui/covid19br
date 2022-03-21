@@ -7,24 +7,39 @@ set_data_attributes <- function(data, last_updated){
 
 
 # Internal function to download Brazilian data from the github repository held by the Department of Statistics of the Universidade Federal de Minas Gerais (UFMG).
+
 downloadBR <- function(language = "en", mr){
-  message("Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/")
-  message("Please, be patient...")
 
   url_brazil <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/brazil.rds?raw=true"
   url_regions <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/regions.rds?raw=true"
   url_states <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/states.rds?raw=true"
   url_cities <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/cities.rds?raw=true"
 
-  covid <- switch(mr,
-                  brazil = try(readRDS(url(url_brazil)), TRUE),
-                  regions = try(readRDS(url(url_regions)), TRUE),
-                  states = try(readRDS(url(url_states)), TRUE),
-                  cities = try(readRDS(url(url_cities)), TRUE)
+  if (!curl::has_internet()) {
+    message("Sorry, no internet connection!")
+    return(NULL)
+  }
+
+  url <- switch(mr,
+                brazil = url_brazil,
+                regions = url_regions,
+                states = url_states,
+                cities = url_cities
   )
 
-  setattr(covid, "language", "en")
-  setattr(covid, "source", "https://covid.saude.gov.br/")
+  if (httr::http_error(url)) {
+    message("Sorry, data source is broken... please, try again later.")
+    return(NULL)
+  }
+
+  message("Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/")
+  message("Please, be patient...")
+  covid <- try(readRDS(url(url)), TRUE)
+  message("Done!")
+  if(!is.null(covid)){
+    setattr(covid, "language", "en")
+    setattr(covid, "source", "https://covid.saude.gov.br/")
+  }
   return(covid)
 
 }
@@ -32,17 +47,27 @@ downloadBR <- function(language = "en", mr){
 
 # Internal function to download data (at world level) from the Johns Hopkins University's repository
 downloadWorld <- function(language = "en"){
+  url_world <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/world.rds?raw=true"
+  if (!curl::has_internet()) {
+    message("Sorry, no internet connection!")
+    return(NULL)
+  }
+
+  if (httr::http_error(url_world)) {
+    message("Sorry, data source is broken... please, try again later.")
+    return(NULL)
+  }
+
   message("Downloading COVID-19 data from the Johns Hopkins University's repository")
   message("Please, be patient...")
-
-  url_world <- "https://github.com/dest-ufmg/covid19repo/blob/master/data/world.rds?raw=true"
   world <- try(readRDS(url(url_world)), TRUE)
-  setattr(world, "language", "en")
-  setattr(world, "source", "https://github.com/CSSEGISandData/COVID-19")
-
+  message("Done!")
+  if(!is.null(world)){
+    setattr(world, "language", "en")
+    setattr(world, "source", "https://github.com/CSSEGISandData/COVID-19")
+  }
   return(world)
 }
-
 
 
 #' Function to download COVID-19 data from web repositories
@@ -107,14 +132,16 @@ downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "
   }else{
     mydata <- try(downloadBR(language = "en", mr), TRUE)
   }
-  if(class(mydata)[1]=="try-error"){
-    message("Unfortunately the data is currently unavailable. Please, try again later.")
-    return(dplyr::tibble())
-  }else{
-    message(" Done!")
+  # if(class(mydata)[1]=="try-error"){
+  #   message("Unfortunately the data is currently unavailable. Please, try again later.")
+  #   return(dplyr::tibble())
+  # }else{
+  #   message(" Done!")
+  # }
+  if(!is.null(mydata)){
+    mydata <- setattr(mydata, "level", level)
+    class(data) <- "data.frame"
   }
-  mydata <- setattr(mydata, "level", level)
-  class(data) <- "data.frame"
   return(mydata)
 }
 

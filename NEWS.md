@@ -30,4 +30,6 @@
 
 # covid19br 0.1.4
 
-- Changing class of downloaded data form data.table data.frame to data.frame for compability with the new version of the package dplyr. 
+- Changing class of downloaded data form data.table data.frame to data.frame for compability with the new version of the package \pkg{dplyr}. 
+
+- The package now fails gracefully with an informative message if the resource is not available or has changed. 

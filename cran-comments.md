@@ -7,16 +7,16 @@ Submission of a new version (0.1.3 to 0.1.4) of the package.
 * win-builder (devel and release)
 
   
-── R CMD check results ──────────────────────────── covid19br 0.1.3 ────
-Duration: 1m 30.2s
+── R CMD check results ────────────────────────────────── covid19br 0.1.4 ────
+Duration: 1m 59.1s
 
-- checking data for ASCII and uncompressed saves ... OK
+> checking data for ASCII and uncompressed saves ... OK
    WARNING
   ‘qpdf’ is needed for checks on size reduction of PDFs
 
-- checking installed package size ... NOTE
-    installed size is  7.8Mb
+> checking installed package size ... NOTE
+    installed size is  6.5Mb
     sub-directories of 1Mb or more:
-      doc   7.5Mb
+      doc   6.3Mb
 
 0 errors ✓ | 1 warning x | 1 note x

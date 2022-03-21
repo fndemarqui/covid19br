@@ -23,8 +23,10 @@ License: AGPL (>= 3)
 Depends: 
     R (>= 3.5.0)
 Imports: 
+    curl,
     data.table,
     dplyr,
+    httr,
     rlang,
     sf,
     tidyr

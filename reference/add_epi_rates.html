@@ -35,7 +35,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -115,10 +115,10 @@
 <span class="r-in"><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu"><a href="downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"brazil"</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  Done!</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
 <span class="r-in"><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu">add_epi_rates</span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 707</span>
+<span class="r-in"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 764</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2020-02-25, 2020-02-26, 2020-02-27, 2020-02-28, 2020-02-…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11…</span>
@@ -126,8 +126,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 1, 1, 1, 2, 2, 2, 2, 3, 7, 13, 19, 25, 25, 34, 52, 77,…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ newRecovered <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ newFollowup  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ newRecovered <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 1, 1, 0, 1, 1, 0, 0, 1, 4, 6, 7, 6, 1, 6, 16, 23, 24, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ newFollowup  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 7, 12, 19, 24, 28, 36, 54, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ pop          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 210147125, 210147125, 210147125, 210147125, 210147125, 21…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0000000000, 0.0004758571, 0.0004758571, 0.0004758571, 0…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.0…</span>

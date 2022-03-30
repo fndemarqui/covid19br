@@ -52,7 +52,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -164,7 +164,7 @@
   <span class="fu"><a href="../reference/add_geo.html">add_geo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="co">#&gt; Please, be patient...</span>
-<span class="co">#&gt;  Done!</span>
+<span class="co">#&gt; Done!</span>
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 <span class="co">#&gt; Joining, by = c("region", "pop")</span>
 
@@ -172,18 +172,18 @@
 <span class="co">#&gt; Rows: 5</span>
 <span class="co">#&gt; Columns: 23</span>
 <span class="co">#&gt; $ region       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Midwest", "North", "Northeast", "South", "Southeast"</span>
-<span class="co">#&gt; $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2022-01-31, 2022-01-31, 2022-01-31, 2022-01-31, 2022-01-3…</span>
-<span class="co">#&gt; $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 5, 5, 5</span>
-<span class="co">#&gt; $ newCases     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 23557, 9872, 15099, 7634, 21785</span>
-<span class="co">#&gt; $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2692052, 2161240, 5392581, 5220867, 9960004</span>
-<span class="co">#&gt; $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 100, 26, 86, 39, 33</span>
-<span class="co">#&gt; $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 60133, 48144, 121657, 98643, 298561</span>
+<span class="co">#&gt; $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2022-03-29, 2022-03-29, 2022-03-29, 2022-03-29, 2022-03-2…</span>
+<span class="co">#&gt; $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 13, 13, 13, 13, 13</span>
+<span class="co">#&gt; $ newCases     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2586, 1643, 4298, 7194, 14335</span>
+<span class="co">#&gt; $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3208764, 2467981, 6170909, 6351493, 11683250</span>
+<span class="co">#&gt; $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 23, 4, 55, 47, 156</span>
+<span class="co">#&gt; $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 62880, 49812, 127896, 103583, 315070</span>
 <span class="co">#&gt; $ newRecovered <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ newFollowup  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span>
 <span class="co">#&gt; $ pop          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 16297074, 18430980, 57071654, 29975984, 88371433</span>
-<span class="co">#&gt; $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 16518.62, 11726.13, 9448.79, 17416.83, 11270.62</span>
-<span class="co">#&gt; $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.23, 2.23, 2.26, 1.89, 3.00</span>
-<span class="co">#&gt; $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 368.9803, 261.2124, 213.1654, 329.0734, 337.8479</span>
+<span class="co">#&gt; $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 19689.20, 13390.39, 10812.56, 21188.61, 13220.62</span>
+<span class="co">#&gt; $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.96, 2.02, 2.07, 1.63, 2.70</span>
+<span class="co">#&gt; $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 385.8361, 270.2624, 224.0972, 345.5533, 356.5292</span>
 <span class="co">#&gt; $ Bolsonaro    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5163023, 4242504, 8824454, 11084395, 28351800</span>
 <span class="co">#&gt; $ Haddad       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2595426, 3933015, 20289812, 5152685, 15016238</span>
 <span class="co">#&gt; $ DHI          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span>

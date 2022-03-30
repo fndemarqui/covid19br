@@ -9,10 +9,10 @@
 The goal of the package is to provide a function to automatically import
 the Brazilian COVID-19 pandemic data into R. Brazilian data is available
 on country, region, state, and city levels, and are downloaded from the
-official Brazilian repository at &lt;<https://covid.saude.gov.br/>&gt;.
-The package also enables one to download the world-level COVID-19 data
-from the Johns Hopkins University’s repository at
-&lt;<https://github.com/CSSEGISandData/COVID-19>&gt;.
+official Brazilian repository at \<<https://covid.saude.gov.br/>\>. The
+package also enables one to download the world-level COVID-19 data from
+the Johns Hopkins University’s repository at
+\<<https://github.com/CSSEGISandData/COVID-19>\>.
 
 ## Installation
 

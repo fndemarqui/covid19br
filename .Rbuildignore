@@ -13,3 +13,5 @@
 ^\.github$
 ^CRAN-RELEASE$
 ^\.Rhistory$
+^CRAN-SUBMISSION$
+^inst/stuff$

@@ -28,9 +28,6 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/add_epi_info.html</loc>
-  </url>
-  <url>
     <loc>/reference/add_epi_rates.html</loc>
   </url>
   <url>
@@ -43,9 +40,6 @@
     <loc>/reference/downloadCovid19.html</loc>
   </url>
   <url>
-    <loc>/reference/election2018.html</loc>
-  </url>
-  <url>
     <loc>/reference/election2018Cities.html</loc>
   </url>
   <url>
@@ -55,27 +49,6 @@
     <loc>/reference/election2018States.html</loc>
   </url>
   <url>
-    <loc>/reference/ibgeCities.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ibgeRegions.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ibgeStates.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipeaCities.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipeaRegions.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipeaStates.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mundi.html</loc>
   </url>
 </urlset>

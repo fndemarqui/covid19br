@@ -1,12 +1,12 @@
 Package: covid19br
 Type: Package
 Title: Brazilian COVID-19 Pandemic Data
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
     c(person(given = "Fabio", 
       family = "Demarqui", 
       email = "fndemarqui@est.ufmg.br", 
-      role = c("aut", "cre")),
+      role = c("aut", "cre", "cph")),
       person(given = "Cristiano", 
       family = "Santos", 
       email = "ccsgaus@ufmg.br", 
@@ -19,7 +19,7 @@ Description: Set of functions to import COVID-19 pandemic data into R. The Brazi
 URL: https://fndemarqui.github.io/covid19br/
 BugReports: https://github.com/fndemarqui/covid19br/issues
 Encoding: UTF-8
-License: AGPL (>= 3)
+License: MIT + file LICENSE
 Depends: 
     R (>= 3.5.0)
 Imports: 
@@ -41,5 +41,5 @@ Suggests:
     testthat,
     tidyverse
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr

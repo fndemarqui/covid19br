@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">covid19br</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.5</span>
       </span>
     </div>
 
@@ -75,17 +75,20 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"brazil"</span>, <span class="st">"regions"</span>, <span class="st">"states"</span>, <span class="st">"cities"</span>, <span class="st">"world"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"brazil"</span>, <span class="st">"regions"</span>, <span class="st">"states"</span>, <span class="st">"cities"</span>, <span class="st">"world"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>level</dt>
 <dd><p>the desired level of data aggregation:  "brazil" (default), "regions", "states", "cities", and "world".</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a tibble containing the downloaded data at the specified level.</p>
+    
+
+<p>a tibble containing the downloaded data at the specified level.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -113,34 +116,34 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Downloading Brazilian COVID-19 data:</span></span>
-<span class="r-in"><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"brazil"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Downloading Brazilian COVID-19 data:</span></span></span>
+<span class="r-in"><span><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"brazil"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"regions"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"regions"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"states"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"states"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"cities"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"cities"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Downloading world COVID-19 data:</span></span>
-<span class="r-in"><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"world"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Downloading world COVID-19 data:</span></span></span>
+<span class="r-in"><span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu">downloadCovid19</span><span class="op">(</span>level <span class="op">=</span> <span class="st">"world"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the Johns Hopkins University's repository</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -155,8 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

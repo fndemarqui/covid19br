@@ -8,7 +8,7 @@ Submission of a new version (0.1.3 to 0.1.4) of the package.
 
   
 ── R CMD check results ────────────────────────────────── covid19br 0.1.4 ────
-Duration: 1m 59.1s
+Duration: 3m 54.5s
 
 > checking data for ASCII and uncompressed saves ... OK
    WARNING
@@ -17,6 +17,6 @@ Duration: 1m 59.1s
 > checking installed package size ... NOTE
     installed size is  6.5Mb
     sub-directories of 1Mb or more:
-      doc   6.3Mb
+      doc   6.2Mb
 
 0 errors ✓ | 1 warning x | 1 note x

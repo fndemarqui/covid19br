@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">covid19br</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.5</span>
       </span>
     </div>
 
@@ -75,19 +75,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">add_epi_rates</span><span class="op">(</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_epi_rates</span><span class="op">(</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>a data set downloaded using the covid19br::downloadCovid19() function.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to other methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the data set with the added incidence, mortality and lethality rates.</p>
+    
+
+<p>the data set with the added incidence, mortality and lethality rates.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -100,9 +105,9 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
@@ -111,14 +116,14 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu"><a href="downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"brazil"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu"><a href="downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"brazil"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading COVID-19 data from the official Brazilian repository: https://covid.saude.gov.br/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Please, be patient...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done!</span>
-<span class="r-in"><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu">add_epi_rates</span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 763</span>
+<span class="r-in"><span><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu">add_epi_rates</span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">brazil</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 1,132</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2020-02-25, 2020-02-26, 2020-02-27, 2020-02-28, 2020-02-…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11…</span>
@@ -132,8 +137,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0000000000, 0.0004758571, 0.0004758571, 0.0004758571, 0…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.0…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0000000000, 0.0000000000, 0.0000000000, 0.0000000000, 0…</span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -148,8 +153,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

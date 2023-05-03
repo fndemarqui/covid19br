@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">covid19br</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.5</span>
       </span>
     </div>
 
@@ -94,36 +94,31 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of the package is to provide a function to automatically
-import the Brazilian COVID-19 pandemic data into R. Brazilian data is
-available on country, region, state, and city levels, and are downloaded
-from the official Brazilian repository at &lt;<a href="https://covid.saude.gov.br/" class="external-link uri">https://covid.saude.gov.br/</a>&gt;. The package also
-enables one to download the world-level COVID-19 data from the Johns
-Hopkins University’s repository at &lt;<a href="https://github.com/CSSEGISandData/COVID-19" class="external-link uri">https://github.com/CSSEGISandData/COVID-19</a>&gt;.</p>
+<p>The goal of the package is to provide a function to automatically import the Brazilian COVID-19 pandemic data into R. Brazilian data is available on country, region, state, and city levels, and are downloaded from the official Brazilian repository at &lt;<a href="https://covid.saude.gov.br/" class="external-link uri">https://covid.saude.gov.br/</a>&gt;. The package also enables one to download the world-level COVID-19 data from the Johns Hopkins University’s repository at &lt;<a href="https://github.com/CSSEGISandData/COVID-19" class="external-link uri">https://github.com/CSSEGISandData/COVID-19</a>&gt;.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the released version of covid19br from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"covid19br"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"covid19br"</span><span class="op">)</span></span></code></pre></div>
 <p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"fndemarqui/covid19br"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"fndemarqui/covid19br"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>Downloading COVID-19 pandemic data:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
-
-<span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"brazil"</span><span class="op">)</span>
-<span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span>
-<span class="va">states</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"states"</span><span class="op">)</span>
-<span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"cities"</span><span class="op">)</span>
-<span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"world"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">brazil</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"brazil"</span><span class="op">)</span></span>
+<span><span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"regions"</span><span class="op">)</span></span>
+<span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"states"</span><span class="op">)</span></span>
+<span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"cities"</span><span class="op">)</span></span>
+<span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/downloadCovid19.html">downloadCovid19</a></span><span class="op">(</span><span class="st">"world"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -176,8 +171,7 @@ Hopkins University’s repository at &lt;<a href="https://github.com/CSSEGISandD
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

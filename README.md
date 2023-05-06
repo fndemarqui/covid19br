@@ -3,14 +3,6 @@
 
 # covid19br
 
-<!-- badges: start -->
-
-[![Downloads](http://cranlogs.r-pkg.org/badges/covid19br?color=blue)](http://cran.rstudio.com/package=covid19br)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/covid19br)](https://CRAN.R-project.org/package=covid19br)
-[![R-CMD-check](https://github.com/fndemarqui/covid19br/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fndemarqui/covid19br/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
-
 The goal of the package is to provide a function to automatically import
 the Brazilian COVID-19 pandemic data into R. Brazilian data is available
 on country, region, state, and city levels, and are downloaded from the

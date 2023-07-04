@@ -36,3 +36,8 @@
 # covid19br 0.1.5
 
 - Reinclusion of vignettes maps.Rmd and election2018.Rmd
+
+
+# covid19br 0.1.6
+
+- Removing vignette maps.Rmd

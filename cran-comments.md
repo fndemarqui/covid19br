@@ -1,5 +1,5 @@
 
-Submission of a new version (0.1.4 to 0.1.5) of the package.
+Submission of a new version (0.1.5 to 0.1.6) of the package.
 
 ## Test environments
 
@@ -17,11 +17,8 @@ Duration: 6m 50.6s
   ‘qpdf’ is needed for checks on size reduction of PDFs
 
 ❯ checking installed package size ... NOTE
-    installed size is  6.7Mb
+    installed size is  5.1Mb
     sub-directories of 1Mb or more:
-      doc   6.5Mb
+      doc   4.8Mb
 
-❯ checking for future file timestamps ... NOTE
-  unable to verify current time
-
-0 errors ✔ | 1 warning ✖ | 2 notes ✖
+0 errors ✔ | 1 warning ✖ | 1 note ✖

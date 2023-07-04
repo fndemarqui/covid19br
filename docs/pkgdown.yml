@@ -1,9 +1,11 @@
-pandoc: 2.19.2
+pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   covid19br: covid19br.html
   election2018: election2018.html
-  maps: maps.html
-last_built: 2023-04-14T16:39Z
+last_built: 2023-07-04T11:24Z
+urls:
+  reference: https://fndemarqui.github.io/covid19br/reference
+  article: https://fndemarqui.github.io/covid19br/articles
 

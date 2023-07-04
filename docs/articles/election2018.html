@@ -4,101 +4,83 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="covid19br">
 <title>Results of the 2018 Brazilian Presidential election • covid19br</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Results of the 2018 Brazilian Presidential election">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Results of the 2018 Brazilian Presidential election">
 <meta property="og:description" content="covid19br">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-P9SJ6LCDMW"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P9SJ6LCDMW');
-</script>
+<![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">covid19br</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.5</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">covid19br</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/covid19br.html">Get started</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../articles/covid19br.html">Get started</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/election2018.html">Results of the 2018 Brazilian Presidential election</a>
-    </li>
-    <li>
-      <a href="../articles/maps.html">Drawing maps with the package covid19br</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/fndemarqui/covid19br/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/election2018.html">Results of the 2018 Brazilian Presidential election</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/fndemarqui/covid19br/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
+    
+  </div>
+</nav><div class="container template-article">
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Results of the 2018 Brazilian Presidential
-election</h1>
+
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Results of the 2018 Brazilian Presidential election</h1>
                         <h4 data-toc-skip class="author">Fábio N.
 Demarqui</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/fndemarqui/covid19br/blob/HEAD/vignettes/election2018.Rmd" class="external-link"><code>vignettes/election2018.Rmd</code></a></small>
-      <div class="hidden name"><code>election2018.Rmd</code></div>
-
+      <div class="d-none name"><code>election2018.Rmd</code></div>
     </div>
 
     
@@ -107,7 +89,7 @@ Demarqui</h4>
 presidential election can be combined with data from the COVID-19
 pandemic.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/" class="external-link">covid19br</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fndemarqui.github.io/covid19br/">covid19br</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># loading the election data:</span></span>
@@ -183,18 +165,18 @@ DHI datasets.</p>
 <span><span class="co">#&gt; Rows: 5</span></span>
 <span><span class="co">#&gt; Columns: 23</span></span>
 <span><span class="co">#&gt; $ region       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Midwest", "North", "Northeast", "South", "Southeast"</span></span>
-<span><span class="co">#&gt; $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2023-04-01, 2023-04-01, 2023-04-01, 2023-04-01, 2023-04-0…</span></span>
-<span><span class="co">#&gt; $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 13, 13, 13, 13, 13</span></span>
-<span><span class="co">#&gt; $ newCases     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5502, 2314, 4782, 14861, 33132</span></span>
-<span><span class="co">#&gt; $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4305185, 2893450, 7336349, 7928381, 14855889</span></span>
-<span><span class="co">#&gt; $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 24, 24, 41, 32, 196</span></span>
-<span><span class="co">#&gt; $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 66073, 51594, 134846, 110800, 337243</span></span>
+<span><span class="co">#&gt; $ date         <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2023-06-30, 2023-06-30, 2023-06-30, 2023-06-30, 2023-06-3…</span></span>
+<span><span class="co">#&gt; $ epi_week     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 26, 26, 26, 26, 26</span></span>
+<span><span class="co">#&gt; $ newCases     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0</span></span>
+<span><span class="co">#&gt; $ accumCases   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4351199, 2913497, 7395316, 8019637, 14991771</span></span>
+<span><span class="co">#&gt; $ newDeaths    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0</span></span>
+<span><span class="co">#&gt; $ accumDeaths  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 66314, 51740, 135569, 111595, 338746</span></span>
 <span><span class="co">#&gt; $ newRecovered <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span></span>
 <span><span class="co">#&gt; $ newFollowup  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA</span></span>
 <span><span class="co">#&gt; $ pop          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 16297074, 18430980, 57071654, 29975984, 88371433</span></span>
-<span><span class="co">#&gt; $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 26416.92, 15698.84, 12854.63, 26449.11, 16810.74</span></span>
-<span><span class="co">#&gt; $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.53, 1.78, 1.84, 1.40, 2.27</span></span>
-<span><span class="co">#&gt; $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 405.4286, 279.9309, 236.2749, 369.6292, 381.6199</span></span>
+<span><span class="co">#&gt; $ incidence    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 26699.27, 15807.61, 12957.95, 26753.54, 16964.50</span></span>
+<span><span class="co">#&gt; $ lethality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.52, 1.78, 1.83, 1.39, 2.26</span></span>
+<span><span class="co">#&gt; $ mortality    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 406.9074, 280.7230, 237.5417, 372.2814, 383.3207</span></span>
 <span><span class="co">#&gt; $ Bolsonaro    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5163023, 4242504, 8824454, 11084395, 28351800</span></span>
 <span><span class="co">#&gt; $ Haddad       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2595426, 3933015, 20289812, 5152685, 15016238</span></span>
 <span><span class="co">#&gt; $ DHI          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6894678, 0.6079510, 0.5906721, 0.7141128, 0.6989844</span></span>
@@ -208,31 +190,25 @@ DHI datasets.</p>
 <!-- ```{r} -->
 <!-- # https://ourworldindata.org/covid-vaccinations -->
 <!-- ``` -->
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-      </div>
-
+  </main>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Fabio Demarqui, Cristiano Santos.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 

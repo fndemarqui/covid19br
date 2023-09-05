@@ -9,8 +9,8 @@ Submission of a new version (0.1.5 to 0.1.6) of the package.
 * github actions workflow
 
   
-── R CMD check results ──────────────────────────────── covid19br 0.1.5 ────
-Duration: 6m 50.6s
+── R CMD check results ───────────────────── covid19br 0.1.7 ────
+Duration: 5m 8.1s
 
 ❯ checking data for ASCII and uncompressed saves ... OK
    WARNING
@@ -21,4 +21,7 @@ Duration: 6m 50.6s
     sub-directories of 1Mb or more:
       doc   4.8Mb
 
-0 errors ✔ | 1 warning ✖ | 1 note ✖
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time
+
+0 errors ✔ | 1 warning ✖ | 2 notes ✖

@@ -26,7 +26,8 @@
 #'@author Fábio N. Demarqui, Cristiano C. Santos, and Matheus B. Costa.
 #' @docType package
 #' @name covid19br
-#' @aliases covid19br
+#' @aliases covid19br-package
+
 #'
 #'
 NULL

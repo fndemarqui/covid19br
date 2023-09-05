@@ -41,3 +41,8 @@
 # covid19br 0.1.6
 
 - Removing vignette maps.Rmd
+
+
+# covid19br 0.1.7
+
+- Adding @aliases covid19br-package to the documentation as requested by the CRAN team.

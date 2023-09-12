@@ -69,13 +69,13 @@
 add_geo <- function(data, ...){
   level <- attributes(data)$level
 
-  if(level=="cities"){
+  if (identical(level, "cities")) {
     data <- data %>%
       filter(!is.na(.data$pop))
   }
-  if(level == "brazil"){
+  if (identical(level, "brazil")) {
     return(data)
-  }else{
+  } else {
     map <- switch (level,
                    "cities" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/geoCities.rds?raw=true")),
                    "states" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/geoStates.rds?raw=true")),
@@ -121,6 +121,7 @@ add_epi_rates <- function(data, ...){
       lethality = replace_na(.data$lethality, 0),
       mortality = 100000*.data$accumDeaths/.data$pop
     )
+  attr(newdata, "level") <- attr(data, "level")
   return(newdata)
 }
 

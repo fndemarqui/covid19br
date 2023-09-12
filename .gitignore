@@ -9,3 +9,7 @@ inst/doc
 inst/stuff
 docs
 cran-comments.md
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto

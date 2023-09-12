@@ -46,3 +46,7 @@
 # covid19br 0.1.7
 
 - Adding @aliases covid19br-package to the documentation as requested by the CRAN team.
+
+# covid19br 0.1.7
+
+- All vignettes has been removed.

@@ -9,8 +9,8 @@ Submission of a new version (0.1.7 to 0.1.8) of the package.
 * github actions workflow
 
   
-── R CMD check results ─────────────────────────────── covid19br 0.1.8 ────
-Duration: 3m 57.8s
+── R CMD check results ───────────────── covid19br 0.1.8 ────
+Duration: 3m 8.9s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 

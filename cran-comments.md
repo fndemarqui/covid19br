@@ -8,9 +8,14 @@ Submission of a new version (0.1.7 to 0.1.8) of the package.
 * win-builder (devel and release)
 * github actions workflow
 
-  
-── R CMD check results ───────────────── covid19br 0.1.8 ────
-Duration: 3m 8.9s
+── R CMD check results ───────────────────────────── covid19br 0.1.8 ────
+Duration: 4m 16.4s
 
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔  
+
+
+
+
+
+
 

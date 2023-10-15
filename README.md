@@ -11,6 +11,7 @@ status](https://github.com/fndemarqui/covid19br/workflows/R-CMD-check/badge.svg)
 [![Downloads](https://cranlogs.r-pkg.org/badges/covid19br)](https://cran.r-project.org/package=covid19br)
 [![Total
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/covid19br?color=orange)](https://cran.r-project.org/package=covid19br)
+[![R-CMD-check](https://github.com/fndemarqui/covid19br/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fndemarqui/covid19br/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of the package is to provide a function to automatically import

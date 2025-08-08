@@ -73,7 +73,6 @@ regions <- downloadCovid19(level = "regions")
 regions_geo <- add_geo(regions)
 glimpse(regions_geo)
 }
-
 }
 \author{
 Fabio N. Demarqui \email{fndemarqui@est.ufmg.br}

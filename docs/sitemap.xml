@@ -1,45 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/404.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/index.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/add_epi_rates.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/add_geo.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/covid19br.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/downloadCovid19.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/election2018Cities.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/election2018Regions.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/election2018States.html</loc>
-  </url>
-  <url>
-    <loc>https://fndemarqui.github.io/covid19br/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://fndemarqui.github.io/covid19br/404.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/LICENSE-text.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/LICENSE.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/authors.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/index.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/news/index.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/add_epi_rates.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/add_geo.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/covid19br.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/downloadCovid19.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/election2018Cities.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/election2018Regions.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/election2018States.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/geocities.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/georegion.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/georegions.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/geostates.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/geoworld.html</loc></url>
+<url><loc>https://fndemarqui.github.io/covid19br/reference/index.html</loc></url>
 </urlset>
+

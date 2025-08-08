@@ -1,3 +1,50 @@
+download_rds_data <- function(level = c("brazil", "regions", "states", "cities", "world"), type = c("covid", "geo")){
+
+  # Initialize the response object
+  response <- NULL
+
+  level <- match.arg(level)
+  type <- match.arg(type)
+
+  url <- switch (type,
+                 covid = paste0("https://github.com/dest-ufmg/covid19repo/blob/master/data/", level, ".rds?raw=true"),
+                 geo =  paste0("https://github.com/dest-ufmg/covid19repo/blob/master/data/geo", level, ".rds?raw=true")
+  )
+
+  # Use a tryCatch block to perform the web request and handle errors
+  tryCatch({
+    response <- httr2::request(url) %>%
+      httr2::req_perform()
+
+    # Check for a successful HTTP status code (e.g., 200 OK)
+    if(httr2::resp_is_error(response)){
+      stop(paste("HTTP request failed with status:", httr2::resp_status(response)))
+    }
+  }, error = function(e){
+    # This block runs if an error occurs (e.g., no internet connection)
+    message("Could not download the data. Please check your internet connection.")
+    message("Error details: ", e$message)
+    return(NULL)
+  })
+
+  # Return NULL if the request was unsuccessful
+  if (is.null(response)){
+    return(tibble::tibble())
+  }else{
+    # Extract raw binary data
+    binary_data <- httr2::resp_body_raw(response)
+
+    # Define the local file path to save the data
+    file_path <- tempfile()
+
+    # Write the binary data to the file
+    writeBin(binary_data, file_path)
+
+    data <- readRDS(file_path)
+    return(data)
+  }
+}
+
 
 #' Adding the geometry to the downloaded data for drawing maps
 #'
@@ -64,30 +111,61 @@
 #' regions_geo <- add_geo(regions)
 #' glimpse(regions_geo)
 #' }
-#'
 
 add_geo <- function(data, ...){
-  level <- attributes(data)$level
 
-  if(level=="cities"){
-    data <- data %>%
-      filter(!is.na(.data$pop))
-  }
-  if(level == "brazil"){
-    return(data)
+  if(nrow(data)>0){
+    level <- attributes(data)$level
+
+    if(level=="cities"){
+      data <- data %>%
+        filter(!is.na(.data$pop))
+    }
+    if(level == "brazil"){
+      return(data)
+    }else{
+      newdata <- switch(level,
+                        regions = dplyr::left_join(data, covid19br::georegions),
+                        states = dplyr::left_join(data, covid19br::geostates),
+                        cities = dplyr::left_join(data, covid19br::geocities),
+                        world = dplyr::left_join(data, covid19br::geoworld),
+      )
+    }
   }else{
-    map <- switch (level,
-                   "cities" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/geoCities.rds?raw=true")),
-                   "states" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/geoStates.rds?raw=true")),
-                   "regions" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/geoRegions.rds?raw=true")),
-                   "world" = readRDS(url("https://github.com/dest-ufmg/covid19repo/blob/master/data/mundi.rds?raw=true"))
-    )
-    newdata <- data %>%
-      dplyr::left_join(map) %>%
-      sf::st_as_sf()
-    return(newdata)
+    message("Geographical information cannot be added to the 0x0 tibble/data.frame provided.")
+    return(tibble::tibble())
   }
+
 }
+
+# add_geo <- function(data, ...){
+#
+#   if(nrow(data)>0){
+#     level <- attributes(data)$level
+#
+#     if(level=="cities"){
+#       data <- data %>%
+#         filter(!is.na(.data$pop))
+#     }
+#     if(level == "brazil"){
+#       return(data)
+#     }else{
+#       map <- download_rds_data(level = level, type = "geo")
+#       if(nrow(map)>0){
+#         newdata <- data %>%
+#           dplyr::left_join(map) %>%
+#           sf::st_as_sf()
+#         return(newdata)
+#       }else{
+#         return(data)
+#       }
+#     }
+#   }else{
+#     message("Geographical information cannot be added to the 0x0 tibble/data.frame provided.")
+#     return(tibble::tibble())
+#   }
+#
+# }
 
 
 
@@ -114,14 +192,20 @@ add_geo <- function(data, ...){
 #'
 
 add_epi_rates <- function(data, ...){
-  newdata <- data %>%
-    mutate(
-      incidence = 100000*.data$accumCases/.data$pop,
-      lethality = round(100*(.data$accumDeaths/.data$accumCases), 2),
-      lethality = replace_na(.data$lethality, 0),
-      mortality = 100000*.data$accumDeaths/.data$pop
-    )
-  return(newdata)
+  if(nrow(data)>0){
+    newdata <- data %>%
+      mutate(
+        incidence = 100000*.data$accumCases/.data$pop,
+        lethality = round(100*(.data$accumDeaths/.data$accumCases), 2),
+        lethality = replace_na(.data$lethality, 0),
+        mortality = 100000*.data$accumDeaths/.data$pop
+      )
+    return(newdata)
+  }else{
+    message("No rates can be computed using the 0x0 tibble/data.frame provided.")
+    return(tibble::tibble())
+  }
+
 }
 
 

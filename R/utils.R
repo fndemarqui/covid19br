@@ -131,6 +131,7 @@ add_geo <- function(data, ...){
                         world = dplyr::left_join(data, covid19br::geoworld),
       )
     }
+    newdata <- sf::st_as_sf(newdata)
   }else{
     message("Geographical information cannot be added to the 0x0 tibble/data.frame provided.")
     return(tibble::tibble())

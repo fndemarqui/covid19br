@@ -99,7 +99,7 @@ download_rds_data <- function(level = c("brazil", "regions", "states", "cities",
 #'   \itemize{
 #'     \item World map: \url{https://CRAN.R-project.org/package=rnaturalearthdata}
 #'     \item Shapefiles for Brazilian maps: \url{https://www.ibge.gov.br/geociencias/downloads-geociencias.html}
-#'     \item Brazilian DHI data: \url{https://www.ipea.gov.br/ipeageo/bases.html}
+#'     \item Brazilian DHI data: \url{https://github.com/ipea/IpeaGeo}
 #'   }
 #'
 #' @examples

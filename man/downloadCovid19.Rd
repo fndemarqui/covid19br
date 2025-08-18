@@ -14,7 +14,7 @@ downloadCovid19(level = c("brazil", "regions", "states", "cities", "world"))
 a tibble containing the downloaded data at the specified level.
 }
 \description{
-This function downloads the pandemic COVID-19 data at Brazil and World levels. Brazilan data is available at national, region, state, and city levels, whereas the world data are available at the country level.
+This function downloads the pandemic COVID-19 data at Brazil and World levels. Brazilian data is available at national, region, state, and city levels, whereas the world data are available at the country level.
 }
 \details{
 Data dictionary (variables commum to brazilian and world data):

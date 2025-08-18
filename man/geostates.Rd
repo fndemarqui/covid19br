@@ -24,11 +24,11 @@ A data frame with 27 rows and 12 variables:
 \source{
 \itemize{
     \item Shapefiles for Brazilian maps: \url{https://www.ibge.gov.br/geociencias/downloads-geociencias.html}
-    \item Brazilian DHI data: \url{https://www.ipea.gov.br/ipeageo/bases.html}
+    \item Brazilian DHI data: \url{https://github.com/ipea/IpeaGeo}
   }
 }
 \description{
-Data set obtaind from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
+Data set obtained from the Instituto Brasileiro de Geografia e Estatística (IBGE) with data on the Brazilian population and geographical information on state level.
 }
 \details{
 The development human index (DHI) variables are available at city level, and their average are computed for state and region levels.

@@ -55,3 +55,7 @@
 
 - Download function was completely rewriten.
 - COVID-19 data is available until May 5, 2023, and will no longer be updated.
+
+# covid19br 1.0.0.1
+
+- Update test file.

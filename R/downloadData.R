@@ -58,6 +58,7 @@ downloadCovid19 <- function(level = c("brazil", "regions", "states", "cities", "
   level <- match.arg(level)
   message("Downloading COVID-19 data... please, be patient!")
   data <- download_rds_data(level = level, type = "covid")
+  attr(data, "level") <- level
   return(data)
 }
 

@@ -1,7 +1,7 @@
 Package: covid19br
 Type: Package
 Title: Brazilian COVID-19 Pandemic Data
-Version: 1.0.0
+Version: 1.0.0.1
 Authors@R: 
     c(person(given = "Fabio", 
       family = "Demarqui", 
@@ -41,4 +41,4 @@ Suggests:
     testthat,
     tidyverse
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

@@ -1,8 +1,8 @@
-pandoc: '3.4'
+pandoc: 3.6.3
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-08-18T21:42Z
+last_built: 2025-10-22T16:54Z
 urls:
   reference: https://fndemarqui.github.io/covid19br/reference
   article: https://fndemarqui.github.io/covid19br/articles
